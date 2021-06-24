@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ssLoader.Json
+namespace ssLoader.Arizona
 {
-    public class NickName
+    class AccountSender
     {
-        public string Nick { get; set; }
     }
 }

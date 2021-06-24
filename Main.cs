@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ssLoader
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -21,9 +21,15 @@ namespace ssLoader
         {
             FolderBrowserDialog folderPath = new FolderBrowserDialog();
             DialogResult res = folderPath.ShowDialog();
-            if (res == System.Windows.Forms.DialogResult.OK)
+            if (res == DialogResult.OK)
             {
                 pathLabel.Text = $"Path: {folderPath.SelectedPath}";
+            }
+            var Arizona = new Arizona.GetAccounts();
+            
+            foreach (var test in Arizona.CheckNameArizona(folderPath.SelectedPath))
+            {
+                MessageBox.Show(test);
             }
         }
     }
