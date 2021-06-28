@@ -88,7 +88,7 @@ namespace ssLoader
             this.moneyToolStripMenuItem,
             this.housesToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.priceToolStripMenuItem.Text = "Price";
             // 
             // carsToolStripMenuItem
@@ -112,7 +112,7 @@ namespace ssLoader
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.aPIKeyToolStripMenuItem.Text = "API Key";
             // 
             // startButton
@@ -123,6 +123,7 @@ namespace ssLoader
             this.startButton.TabIndex = 3;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // Main
             // 
