@@ -11,22 +11,37 @@ namespace ssLoader.SampStoreAPI
 {
     class AddAccount
     {
-        public string ToBase64(string simpleText)
+        public  string ToBase64(string plainText)
         {
-            return simpleText != null ? Convert.ToBase64String(Encoding.UTF8.GetBytes(simpleText)) : "";
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
         }
-        public async Task SendAPI (string key, string server, string price, string reg, string login, string password,
+        public async Task SendApi (string key, string server, string price, string reg, string login, string password,
             string code, string info, string title)
         {
             try
             {
-                var streamReader = new StreamReader((await WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
+                /*var streamReader = new StreamReader((await WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
                                                                              $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" + 
                                                                              $"&alogin={login}&password={password}" + 
-                                                                             $"&code={code}&info={info}&tittle={title}").GetResponseAsync()).GetResponseStream()!);
+                                                                             $"&code={code}&info={info}&tittle={title}".Split('|')).GetResponseAsync()).GetResponseStream()!);
                 var result = await streamReader.ReadToEndAsync();
                 using var webClient = new WebClient(); 
-                streamReader.Close();
+                streamReader.Close();*/
+                var request = WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
+                    $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" +
+                    $"&alogin={login}&password={password}" +
+                    $"&code={code}&info={info}&tittle={title}");
+                using (var response = await request.GetResponseAsync())
+                {
+                    using (var stream = response.GetResponseStream())
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            var result = await reader.ReadToEndAsync();
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
