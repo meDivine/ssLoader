@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ssLoader.Json
 {
     class ArizonaFormat
     {
-        public string nickName { get; set; }
+        public string nick { get; set; }
         public string password { get; set; }
         public int money { get; set; }
         public int skin { get; set; }
