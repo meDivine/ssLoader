@@ -8,5 +8,7 @@ namespace ssLoader.Json
 {
     class Level
     {
+        public float ArizonaRP { get; set; }
+        public float SampRp { get; set; }
     }
 }

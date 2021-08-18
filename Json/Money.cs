@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ssLoader.Json
 {
-    class Money
+    public class Money
     {
+        public float ArizonaRP { get; set; }
+        public float SampRP { get; set; }
+        public float AmazingRP { get; set; }
     }
 }

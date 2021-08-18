@@ -43,9 +43,14 @@ namespace ssLoader
         {
              var accountSender = new AddAccount();
             var arzSend = new AccountSender();
-             arzSend.ArizonaSender(folderPath.SelectedPath);
+            Task.Run(() => arzSend.ArizonaSender(folderPath.SelectedPath));
             //string password = "Cfif1998";
            // Task.Run(() => accountSender.SendApi("1c96b8c2e30f007345c42825d556a0b1", "95.181.158.75:7777", "20", null, "Lucian_Butchers", password, null, "testcode", "test title"));
+        }
+
+        private void aPIKeyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

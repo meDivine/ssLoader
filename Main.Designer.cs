@@ -35,9 +35,9 @@ namespace ssLoader
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
-            this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,14 +93,21 @@ namespace ssLoader
             // moneyToolStripMenuItem
             // 
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
-            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.moneyToolStripMenuItem.Text = "Money";
+            // 
+            // levelToolStripMenuItem
+            // 
+            this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+            this.levelToolStripMenuItem.Text = "Level";
             // 
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
             this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aPIKeyToolStripMenuItem.Text = "API Key";
+            this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
             // startButton
             // 
@@ -112,12 +119,6 @@ namespace ssLoader
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
-            // 
-            // levelToolStripMenuItem
-            // 
-            this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.levelToolStripMenuItem.Text = "Level";
             // 
             // Main
             // 
