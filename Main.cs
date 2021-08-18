@@ -42,9 +42,10 @@ namespace ssLoader
         private void startButton_Click(object sender, EventArgs e)
         {
              var accountSender = new AddAccount();
-            //  arzSend.ArizonaSender(folderPath.SelectedPath));
-            string password = "Cfif1998";
-            Task.Run(() => accountSender.SendApi("1c96b8c2e30f007345c42825d556a0b1", "95.181.158.75:7777", "20", null, "Lucian_Butchers", password, null, "testcode", "test title"));
+            var arzSend = new AccountSender();
+             arzSend.ArizonaSender(folderPath.SelectedPath);
+            //string password = "Cfif1998";
+           // Task.Run(() => accountSender.SendApi("1c96b8c2e30f007345c42825d556a0b1", "95.181.158.75:7777", "20", null, "Lucian_Butchers", password, null, "testcode", "test title"));
         }
     }
 }

@@ -13,8 +13,8 @@ namespace ssLoader.SampStoreAPI
     {
         public  string ToBase64(string plainText)
         {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
         }
         public async Task SendApi (string key, string server, string price, string reg, string login, string password,
             string code, string info, string title)

@@ -17,15 +17,13 @@ namespace ssLoader.Arizona
             {
                 var arizonaFormat = new ArizonaFormat();
                 var getAccounts = new GetAccounts();
-                var brainburgGoods = getAccounts.CheckNameArizona(path);
+                var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
                 var accountSender = new AddAccount();
-                 foreach (var test in brainburgGoods)
+                foreach (var ARZ in brainburgGoods)
                  {
-                     var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{test}.json");
+                     var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json");
                      var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                     MessageBox.Show(result.nick);
-                     
-
+                     MessageBox.Show(result.nick + result.password);
                  }
             }
             catch (Exception e)
