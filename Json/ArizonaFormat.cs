@@ -11,6 +11,7 @@ namespace ssLoader.Json
     class ArizonaFormat
     {
         public string nick { get; set; }
+        public int lvl { get; set; }
         public string password { get; set; }
         public int money { get; set; }
         public int skin { get; set; }

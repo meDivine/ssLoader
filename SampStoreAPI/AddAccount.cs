@@ -16,7 +16,7 @@ namespace ssLoader.SampStoreAPI
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             return Convert.ToBase64String(plainTextBytes);
         }
-        public async Task SendApi (string key, string server, string price, string reg, string login, string password,
+        public async Task SendApi (string key, string server, double price, string reg, string login, string password,
             string code, string info, string title)
         {
             try

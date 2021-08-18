@@ -8,7 +8,15 @@ namespace ssLoader.Json
 {
     class Level
     {
-        public float ArizonaRP { get; set; }
-        public float SampRp { get; set; }
+        public int ArizonaRP { get; set; }
+        public int SampRP { get; set; }
+        public int AmazingRP { get; set; }
+        public int DiamondRP { get; set; }
+        public int TrinityRP { get; set; }
+        public int EvolveRP { get; set; }
+        public int AdvanceRP { get; set; }
+        public int RodinaRP { get; set; }
+        public int GTARP { get; set; }
+        public int RadmirRP { get; set; }
     }
 }

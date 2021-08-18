@@ -38,6 +38,7 @@ namespace ssLoader
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +88,7 @@ namespace ssLoader
             this.moneyToolStripMenuItem,
             this.levelToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.priceToolStripMenuItem.Text = "Price";
             // 
             // moneyToolStripMenuItem
@@ -95,6 +96,7 @@ namespace ssLoader
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
             this.moneyToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
             this.moneyToolStripMenuItem.Text = "Money";
+            this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
             // 
             // levelToolStripMenuItem
             // 
@@ -105,7 +107,7 @@ namespace ssLoader
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.aPIKeyToolStripMenuItem.Text = "API Key";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
@@ -120,18 +122,30 @@ namespace ssLoader
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox1.Location = new System.Drawing.Point(14, 33);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(583, 368);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 475);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.folderBrowse);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "SS-LOADER | by Divine";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -150,6 +164,7 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem aPIKeyToolStripMenuItem;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.ToolStripMenuItem levelToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

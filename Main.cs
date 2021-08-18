@@ -28,7 +28,7 @@ namespace ssLoader
 
             if (res == DialogResult.OK)
             {
-                pathLabel.Text = $"Path: {accountSender.ToBase64("Cfif1998")}";
+                pathLabel.Text = $"Path: {folderPath}";
             }
             /*var Arizona = new Arizona.GetAccounts();
             
@@ -49,6 +49,17 @@ namespace ssLoader
         }
 
         private void aPIKeyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void moneyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form moneys = new Moneys();
+            moneys.Show();
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

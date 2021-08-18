@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ssLoader.Json
 {
-    class Config
+   public class Config
     {
+        public string api_key { get; set; }
     }
 }
