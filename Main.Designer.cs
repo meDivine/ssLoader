@@ -88,7 +88,7 @@ namespace ssLoader
             this.moneyToolStripMenuItem,
             this.levelToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.priceToolStripMenuItem.Text = "Цены";
             // 
             // moneyToolStripMenuItem
@@ -108,8 +108,8 @@ namespace ssLoader
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
-            this.aPIKeyToolStripMenuItem.Text = "API Ключ";
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPIKeyToolStripMenuItem.Text = "Настройки";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
             // startButton

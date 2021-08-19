@@ -50,6 +50,7 @@ namespace ssLoader
             this.textBoxAmazing = new System.Windows.Forms.TextBox();
             this.GTARP = new System.Windows.Forms.Label();
             this.textBoxGTARP = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             Refresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -223,11 +224,21 @@ namespace ssLoader
             this.textBoxGTARP.Size = new System.Drawing.Size(48, 27);
             this.textBoxGTARP.TabIndex = 20;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(203, 245);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 20);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Цена за миллион";
+            // 
             // Moneys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 309);
+            this.ClientSize = new System.Drawing.Size(346, 308);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxGTARP);
             this.Controls.Add(this.GTARP);
             this.Controls.Add(this.textBoxAmazing);
@@ -280,5 +291,6 @@ namespace ssLoader
         private System.Windows.Forms.TextBox textBoxAmazing;
         private System.Windows.Forms.Label GTARP;
         private System.Windows.Forms.TextBox textBoxGTARP;
+        private System.Windows.Forms.Label label1;
     }
 }

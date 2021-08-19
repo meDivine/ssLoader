@@ -50,6 +50,7 @@ namespace ssLoader
             this.SampRP = new System.Windows.Forms.Label();
             this.textBoxRadmirRP = new System.Windows.Forms.TextBox();
             this.RadmirRP = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // updateButton
@@ -222,11 +223,21 @@ namespace ssLoader
             this.RadmirRP.TabIndex = 19;
             this.RadmirRP.Text = "Radmir RP";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 343);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 20);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Цена за 1 уровень";
+            // 
             // Levels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 355);
+            this.ClientSize = new System.Drawing.Size(318, 371);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxRadmirRP);
             this.Controls.Add(this.RadmirRP);
             this.Controls.Add(this.textBoxSampRP);
@@ -279,5 +290,6 @@ namespace ssLoader
         private System.Windows.Forms.Label SampRP;
         private System.Windows.Forms.TextBox textBoxRadmirRP;
         private System.Windows.Forms.Label RadmirRP;
+        private System.Windows.Forms.Label label1;
     }
 }

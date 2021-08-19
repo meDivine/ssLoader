@@ -36,7 +36,7 @@ namespace ssLoader.Arizona
 
                 #region Десериализация json файлов
                 using FileStream api_key = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
-                var jsonConfig = await JsonSerializer.DeserializeAsync<Json.Config>(api_key);
+                var jsonConfig = await JsonSerializer.DeserializeAsync<Json.Configurate>(api_key);
 
                 using FileStream openStream = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
                 var moneyPrice = await JsonSerializer.DeserializeAsync<Money>(openStream);
@@ -52,6 +52,8 @@ namespace ssLoader.Arizona
                // var arizonaFormat = new ArizonaFormat();
                 var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
                 var main = new Main();
+                var arzCars =
+                new System.IO.StreamReader($@"{getCurrDir}\Config\ARZCarPrice.txt");
                 foreach (var ARZ in brainburgGoods)
                 {
                     if (File.Exists($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json"))
@@ -60,7 +62,13 @@ namespace ssLoader.Arizona
                         var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
                         /* var text1 = File.ReadAllText($@"C:\Users\Fesenko.AP\source\repos\BUTCHERS228\ssLoader\bin\Debug\net5.0-windows\Config\Config.json");
                          var result1 = JsonSerializer.Deserialize<Config>(text1);*/
-                        var price = countPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                        string line;
+                        while ((line = arzCars.ReadLine()) != null)
+                        {
+                            var output = line.Substring(0, line.IndexOf(':'));
+                            MessageBox.Show(output,"");
+                        }
+                            var price = countPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                         MessageBox.Show($"{result.nick} ник | {result.money} | цена акк {price}");
                         successArizona++;
                     }
