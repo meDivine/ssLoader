@@ -88,27 +88,28 @@ namespace ssLoader
             this.moneyToolStripMenuItem,
             this.levelToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
-            this.priceToolStripMenuItem.Text = "Price";
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.priceToolStripMenuItem.Text = "Цены";
             // 
             // moneyToolStripMenuItem
             // 
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
-            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
-            this.moneyToolStripMenuItem.Text = "Money";
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.moneyToolStripMenuItem.Text = "Валюта";
             this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
             // 
             // levelToolStripMenuItem
             // 
             this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
-            this.levelToolStripMenuItem.Text = "Level";
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.levelToolStripMenuItem.Text = "Уровни";
+            this.levelToolStripMenuItem.Click += new System.EventHandler(this.levelToolStripMenuItem_Click);
             // 
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
-            this.aPIKeyToolStripMenuItem.Text = "API Key";
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPIKeyToolStripMenuItem.Text = "API Ключ";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
             // startButton
@@ -164,7 +165,7 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem aPIKeyToolStripMenuItem;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.ToolStripMenuItem levelToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

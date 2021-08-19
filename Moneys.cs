@@ -1,4 +1,5 @@
-﻿using ssLoader.Json;
+﻿using Newtonsoft.Json;
+using ssLoader.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,15 +18,15 @@ namespace ssLoader
     {
         public Moneys()
         {
-            onStart();
+            OnStart();
             InitializeComponent();
         }
         private string getCurrDir = Directory.GetCurrentDirectory();
 
-        private async void onStart() 
+        private async void OnStart() 
         {
             using FileStream moneyFile = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
-            var prices = await JsonSerializer.DeserializeAsync<Money>(moneyFile);
+            var prices = await System.Text.Json.JsonSerializer.DeserializeAsync<Money>(moneyFile);
             textBoxArizona.Text = prices.ArizonaRP.ToString();
             textBoxAdvance.Text = prices.AdvanceRP.ToString();
             textBoxAmazing.Text = prices.AmazingRP.ToString();
@@ -38,17 +39,38 @@ namespace ssLoader
             textBoxTrinity.Text  = prices.TrinityRP.ToString();
         }
 
-        private async void onReload()
+        private void OnReload()
         {
-            using FileStream moneyFile = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
-            var prices = await JsonSerializer.DeserializeAsync<Money>(moneyFile);
-            prices.ArizonaRP = float.Parse(textBoxArizona.Text);
+            try
+            {
+                string json = File.ReadAllText(@$"{getCurrDir}\Config\Money.json");
+                dynamic jsonObj = JsonConvert.DeserializeObject<Money>(json);
+                jsonObj.ArizonaRP = int.Parse(textBoxArizona.Text);
+                jsonObj.AdvanceRP = int.Parse(textBoxAdvance.Text);
+                jsonObj.AmazingRP = int.Parse(textBoxAmazing.Text);
+                jsonObj.DiamondRP = int.Parse(textBoxDiamond.Text);
+                jsonObj.EvolveRP = int.Parse(textBoxEvolve.Text);
+                jsonObj.GTARP = int.Parse(textBoxGTARP.Text);
+                jsonObj.RadmirRP = int.Parse(textBoxRadmir.Text);
+                jsonObj.RodinaRP = int.Parse(textBoxRodina.Text);
+                jsonObj.SampRP = int.Parse(textBoxSRP.Text);
+                jsonObj.TrinityRP = int.Parse(textBoxTrinity.Text);
+                using (StreamWriter file = File.CreateText(@$"{getCurrDir}\Config\Money.json"))
+                {
+                    Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                    serializer.Serialize(file, jsonObj);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Введено не число", "Ошибка");
+            }
 
         }
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            onReload();
+            OnReload();
         }
     }
 }

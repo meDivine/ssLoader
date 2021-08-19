@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ssLoader.Json
 {
-    class Level
+    public class Level
     {
         public int ArizonaRP { get; set; }
         public int SampRP { get; set; }

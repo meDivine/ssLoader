@@ -29,6 +29,9 @@
     <None Update="Config\Config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Config\Levels.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Config\Money.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

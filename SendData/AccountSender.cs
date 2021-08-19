@@ -33,14 +33,17 @@ namespace ssLoader.Arizona
                 #region ArizonaRP
                 var arizonaFormat = new ArizonaFormat();
                 var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
-
+                var main = new Main();
                 foreach (var ARZ in brainburgGoods)
                 {
                     var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json");
                     var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
+                   /* var text1 = File.ReadAllText($@"C:\Users\Fesenko.AP\source\repos\BUTCHERS228\ssLoader\bin\Debug\net5.0-windows\Config\Config.json");
+                    var result1 = JsonSerializer.Deserialize<Config>(text1);*/
                     var priceMoney = (result.money / 1000000.0) * moneyPrice.ArizonaRP;
-                    await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, 10 + (int)priceMoney, null, result.nick, result.password, "", "хорошего дня :)", $"{result.lvl} уровень | {result.money}$ на руках"));
-                }
+                    main.richTextBox1.Text += $"[ARZ Brainburg] {result.nick} | {result.lvl} уровень | {result.money}$ на руках";
+                   // await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, 10 + (int)priceMoney, null, result.nick, result.password, "", "хорошего дня :)", $"{result.lvl} уровень | {result.money}$ на руках"));
+                }/*
                 var ChandlerGoods = getAccounts.CheckNameArizonaChandler(path);
                 foreach (var ARZ in ChandlerGoods)
                 {
@@ -175,7 +178,7 @@ namespace ssLoader.Arizona
                     var priceMoney = (result.money / 1000000.0) * moneyPrice.ArizonaRP;
                     await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, 10 + (int)priceMoney, null, result.nick, result.password, "", "хорошего дня :)", $"{result.lvl} уровень | {result.money}$ на руках"));
                     //MessageBox.Show($"ник {result.nick} Пароль: {result.password} Цена виртов {priceMoney} Виртов {result.money} Цена за лям {moneyPrice.ArizonaRP}");
-                }
+                }*/
                 #endregion
 
             }

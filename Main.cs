@@ -16,6 +16,7 @@ namespace ssLoader
     {
         public Main()
         {
+           
             InitializeComponent();
         }
 
@@ -28,7 +29,7 @@ namespace ssLoader
 
             if (res == DialogResult.OK)
             {
-                pathLabel.Text = $"Path: {folderPath}";
+                pathLabel.Text = $"Path: {res}";
             }
             /*var Arizona = new Arizona.GetAccounts();
             
@@ -62,6 +63,12 @@ namespace ssLoader
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void levelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Levels = new Levels();
+            Levels.Show();
         }
     }
 }
