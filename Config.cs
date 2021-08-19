@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ssLoader
 {
-    public partial class ApiKey : Form
+    public partial class Config : Form
     {
-        public ApiKey()
+        public Config()
         {
             InitializeComponent();
         }

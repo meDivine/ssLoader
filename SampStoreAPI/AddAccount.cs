@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +9,12 @@ namespace ssLoader.SampStoreAPI
 {
     class AddAccount
     {
-        public  string ToBase64(string plainText)
+        public string ToBase64(string plainText)
         {
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             return Convert.ToBase64String(plainTextBytes);
         }
-        public async Task SendApi (string key, string server, double price, string reg, string login, string password,
+        public async Task SendApi(string key, string server, double price, string reg, string login, string password,
             string code, string info, string title)
         {
             try
@@ -48,5 +46,5 @@ namespace ssLoader.SampStoreAPI
                 MessageBox.Show(ex.Message, "Ошибка залива");
             }
         }
-	}
+    }
 }

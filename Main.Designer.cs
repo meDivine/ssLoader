@@ -38,13 +38,13 @@ namespace ssLoader
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // folderBrowse
             // 
-            this.folderBrowse.Location = new System.Drawing.Point(409, 409);
+            this.folderBrowse.Location = new System.Drawing.Point(12, 191);
             this.folderBrowse.Name = "folderBrowse";
             this.folderBrowse.Size = new System.Drawing.Size(94, 29);
             this.folderBrowse.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace ssLoader
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(14, 409);
+            this.pathLabel.Location = new System.Drawing.Point(12, 168);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(40, 20);
             this.pathLabel.TabIndex = 1;
@@ -69,7 +69,7 @@ namespace ssLoader
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(609, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(380, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,33 +88,33 @@ namespace ssLoader
             this.moneyToolStripMenuItem,
             this.levelToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.priceToolStripMenuItem.Text = "Цены";
             // 
             // moneyToolStripMenuItem
             // 
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
-            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
             this.moneyToolStripMenuItem.Text = "Валюта";
             this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
             // 
             // levelToolStripMenuItem
             // 
             this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
             this.levelToolStripMenuItem.Text = "Уровни";
             this.levelToolStripMenuItem.Click += new System.EventHandler(this.levelToolStripMenuItem_Click);
             // 
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.aPIKeyToolStripMenuItem.Text = "API Ключ";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(510, 408);
+            this.startButton.Location = new System.Drawing.Point(282, 189);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(86, 31);
@@ -123,27 +123,27 @@ namespace ssLoader
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // richTextBox1
+            // label1
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Location = new System.Drawing.Point(14, 33);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(583, 368);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 475);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(380, 253);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.folderBrowse);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "SS-LOADER | by Divine";
@@ -165,7 +165,7 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem aPIKeyToolStripMenuItem;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.ToolStripMenuItem levelToolStripMenuItem;
-        public System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.Label label1;
     }
 }
 

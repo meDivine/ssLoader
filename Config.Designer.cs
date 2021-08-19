@@ -1,7 +1,7 @@
 ﻿
 namespace ssLoader
 {
-    partial class ApiKey
+    partial class Config
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@ namespace ssLoader
         {
             this.refreshTextBox = new System.Windows.Forms.TextBox();
             this.refreshbutton = new System.Windows.Forms.Button();
+            this.apikey = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // refreshTextBox
@@ -49,14 +50,25 @@ namespace ssLoader
             this.refreshbutton.Text = "Обновить";
             this.refreshbutton.UseVisualStyleBackColor = true;
             // 
-            // ApiKey
+            // apikey
+            // 
+            this.apikey.AutoSize = true;
+            this.apikey.Location = new System.Drawing.Point(13, 32);
+            this.apikey.Name = "apikey";
+            this.apikey.Size = new System.Drawing.Size(74, 20);
+            this.apikey.TabIndex = 2;
+            this.apikey.Text = "API ключ ";
+            // 
+            // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(393, 194);
+            this.Controls.Add(this.apikey);
             this.Controls.Add(this.refreshbutton);
             this.Controls.Add(this.refreshTextBox);
-            this.Name = "ApiKey";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "Config";
             this.Text = "SS-LOADER | API-Ключ samp-store";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -67,5 +79,6 @@ namespace ssLoader
 
         private System.Windows.Forms.TextBox refreshTextBox;
         private System.Windows.Forms.Button refreshbutton;
+        private System.Windows.Forms.Label apikey;
     }
 }
