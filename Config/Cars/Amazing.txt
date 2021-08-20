@@ -1,0 +1,79 @@
+﻿Ока:30000
+УАЗ Hunter:90000
+ВАЗ 2112:80000
+ЯВА:60000
+УАЗ 3741:60000
+ВАЗ 2105:40000
+Восход 3М:70000
+ВАЗ 2106:80000
+Нива Урбан:100000
+ИЖ Планета:80000
+ВАЗ 2104:80000
+ВАЗ 2108:90000
+УАЗ 452:100000
+ВАЗ 2115:130000
+ВАЗ 2109:100000
+ВАЗ 2114:150000
+ВАЗ 2110:180000
+Лада Приора:400000
+ВАЗ 2113:300000
+Камаз Спорт:7000000
+Skoda Rapid:650000
+Квадроцикл:100000
+Renault Logan:400000
+Sanchez:150000
+Freeway:200000
+Seat Toledo:250000
+KIA Stinger:850000
+Volkswagen Golf:450000
+Lincoln Town:400000
+Caddilac ELD:500000
+Honda Civic:350000
+Toyota Mark II:500000
+GMC:800000
+Toyota Supra:900000
+Dodge SRT:2500000
+Toyota Camry:1500000
+Toyota Land Cruiser:5000000
+MB W124:1000000
+BF 400:1300000
+Audi RS7:2500000
+MB S600:1500000
+Mustang:900000
+Toyota GT86:900000
+M Lancer Evo 9:1500000
+Peugeot 206:500000
+Ducati:1500000
+Nissan Skyline:2000000
+BMW 750iL:900000
+Jaguar F-Type:1500000
+Mazda RX-7:1000000
+LR Evoque:2000000
+MB E63S:5000000
+Cadillac Escalade:4000000
+Chevrolet Camaro:3000000
+BMW X5M:3000000
+Mazda RX-8:800000
+MB GT:5000000
+FORD Raptor:3000000
+Chevrolet Suburban:6000000
+BMW M5 F90:6000000
+MB G65:5000000
+BMW M2:3500000
+BMW i8:8000000
+Audi R8:6000000
+Ferrari:7000000
+Nissan GTR:7000000
+Lamborghini Huracan:12000000
+Maybach:10000000
+Rolls Royce:25000000
+Audi RS6:15000000
+Buggi:5000000
+Гольф-Кар:3000000
+BMW M3:15000000
+Monster:10000000
+MB Gelandewagen G65 W463:2000000
+Porsche 911 Turbo:6000000
+УАЗ Патриот:2000000
+Lada 4x4 Urban:1000000
+1:1

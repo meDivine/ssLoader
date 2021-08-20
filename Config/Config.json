@@ -3,5 +3,6 @@
     "title": "",
     "secret_money": false,
     "secret_level": false,
-    "seller_message": ""
+    "seller_message": "",
+    "license":  ""
 }
