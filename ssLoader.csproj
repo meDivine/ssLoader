@@ -26,7 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Config\ARZCarPrice.txt">
+    <None Update="Config\Cars\Amazing.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Cars\ArizonaRP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Cars\ARZ.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Config\Config.json">

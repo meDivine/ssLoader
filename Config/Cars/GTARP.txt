@@ -1,0 +1,86 @@
+﻿Запорожец:50000
+Ока:50000
+Ваз 2113:150000
+Ваз 2106:90000
+Уаз Буханка:95000
+Ваз 2101:120000
+Ваз 2114:120000
+Лада Таврия:120000
+Ваз 2107:125000
+Нива Урбан 600:130000
+Опель Астра:340000
+Лада 2104:130000
+Москвич 88:130000
+Лада 2110:180000
+Ваз 2112:190000
+Лада Гранта:260000
+Лада Приора:390000
+Лада Веста:480000
+ИЖ Москвич-400:550000
+УАЗ Патриот:600000
+Opel OPC:850000
+Mazda 3:230000
+Renault CLID:1500000
+Skoda SUPERB:670000
+Subaru WRX:1200000
+KIA CEED:600000
+Квадроцикл:600000
+MB W140:650000
+VW PASSAT:750000
+VW SCIROCCO:850000
+BMW Z4:3200000
+Opel ASTRA:650000
+Nissan QASHQAI:1350000
+Mercedes-benz E500:1000000
+Nissan GTR R34:1000000
+Ford Focus:1200000
+BMW M5 E60:2500000
+Lexus GS-F:2300000
+Audi RS6 ABT:4000000
+Mercedes-benz 560 SEC:1100000
+Toyota Camry:1800000
+Audi S5:3800000
+BMW M4:2000000
+Mercedes-Maybach S650:8500000
+BMW M5 F90:6700000
+MB VITO:2500000
+Mercedes-benz G63:8750000
+Mercedes E350D:3000000
+Mercedes-benz GLE63:3000000
+Mazda RX-7:1200000
+Infiniti Q50:1500000
+Jeep Grand Cherokee SRT:3200000
+BMW X5M:4000000
+Toyota Land Cruiser 200:3500000
+Audi RS7:4850000
+Вертолет:10000000
+Maverick Buckingham:13000000
+VW Polo:165000
+KIA Stinger:2500000
+BMW M2:3300000
+Audi Q7:2700000
+BMW 760LI F02:1200000
+Мотоцикл:500000
+Unibp Rolink Мотоцикл:500000
+Мотоцикл:1000000
+Kawasaki 250:1500000
+Porsche 911 Carrera s 19:4500000
+Nissan GTR:3000000
+Ferrari F12 TDF:4300000
+Ямаха:4000000
+Tesla S:4000000
+Mustang GT:4000000
+Land Rover SVA:5000000
+Porsche Cayenne:5000000
+Mercedes-AMG GT:5000000
+Bentley Bentayga:11000000
+Rolls-Royce Phantom:17000000
+Lamborghini Centenario:15000000
+Porsche Panamera:5000000
+BMW I8:10000000
+Bugatti Chiron:18000000
+Lamborghini Huracan PF:15000000
+Audi R8:5800000
+Lamborghini Urus:12000000
+Ford Raptor 2018:4000000
+Chevrolet Camaro:3500000

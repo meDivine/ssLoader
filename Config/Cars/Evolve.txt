@@ -1,0 +1,87 @@
+﻿Bansheeх:5400000
+Buffalo:4800000
+Bullet:6000000
+Cheetah:5600000
+Hotknife:4800000
+Infernus:6000000
+Super GT:5100000
+Turismo:6000000
+Sandking:5800000
+Hotring Racer:6000000
+Hotring Racer A:6000000
+Hotring Racer B:6000000
+BF Injection:5000000
+Alfa:2000000
+Comet:2400000
+Elegy:2200000
+Euros:2100000
+Flash:2100000
+Hustler:1900000
+Jester(Toyota Supra):2200000
+Slamvan:2000000
+Sultan:2250000
+Uranus:2100000
+ZR-350:2200000
+Admiral:810000
+Club:770000
+Esperento:800000
+Feltzer:920000
+Huntley:940000
+Moonbeam:760000
+Phoenix:750000
+Rancher:880000
+Remington:760000
+Stafford:1000000
+Stratum:910000
+Virgo:880000
+Washington:830000
+Windsor:940000
+Yosemite:940000
+Blade:400000
+Blista Compact:480000
+Bobcat:310000
+Bravura:310000
+Broadway:460000
+Elegant:450000
+Emperor:360000
+Hermes:370000
+Merit:480000
+Oceanic:390000
+Picador:420000
+Premier:420000
+Sentinal:400000
+Sunrise:480000
+Tahoma:340000
+Tornado:350000
+Vincent:330000
+Voodoo:390000
+Willard:440000
+Buccaneer:170000
+Cadrona:100000
+Clover:120000
+Fortune:110000
+Glendale:110000
+Greenwood:140000
+Intruder:140000
+Landstalker:130000
+Majestic:150000
+Nebula:140000
+Perennial:100000
+Regina:110000
+Previon:110000
+Primo:110000
+Sabre:190000
+Sadler:100000
+Savanna:200000
+Solair:120000
+Stallion:150000
+Tampa:120000
+Walton:100000
+NRG-500:4600000
+FCR-900:1500000
+Freeway:2000000
+Sanchez:1900000
+BF-400:1000000
+PCJ-600:1000000
+Wayfarer:800000
+Quad:2100000
