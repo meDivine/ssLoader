@@ -43,7 +43,7 @@ namespace ssLoader
 
         private void startButton_Click(object sender, EventArgs e)
         {
-             var accountSender = new AddAccount();
+            var accountSender = new AddAccount();
             var arzSend = new AccountSender();
             Task.Run(() => arzSend.SendToSS(folderPath.SelectedPath));
             //string password = "Cfif1998";
@@ -71,20 +71,6 @@ namespace ssLoader
         {
             Form Levels = new Levels();
             Levels.Show();
-        }
-
-        public void invoker(Label label, string s)
-        {
-            Invoke(new Action(() => { label1.Text = s; }));
-        }
-
-        public void setLabelTextFromThread(Label label, string text)
-        {
-
-            label.Invoke((MethodInvoker)delegate
-            {
-                label.Text = text;
-            });
         }
 
 

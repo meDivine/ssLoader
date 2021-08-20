@@ -48,9 +48,9 @@ namespace ssLoader
             // 
             this.refreshbutton.Location = new System.Drawing.Point(12, 152);
             this.refreshbutton.Name = "refreshbutton";
-            this.refreshbutton.Size = new System.Drawing.Size(94, 29);
+            this.refreshbutton.Size = new System.Drawing.Size(102, 29);
             this.refreshbutton.TabIndex = 1;
-            this.refreshbutton.Text = "Обновить";
+            this.refreshbutton.Text = "Применить";
             this.refreshbutton.UseVisualStyleBackColor = true;
             this.refreshbutton.Click += new System.EventHandler(this.refreshbutton_Click);
             // 
@@ -84,9 +84,7 @@ namespace ssLoader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 206);
-            this.Controls.Add(this.message);
-            this.Controls.Add(this.messageboxSeler);
+            this.ClientSize = new System.Drawing.Size(393, 194);
             this.Controls.Add(this.apikey);
             this.Controls.Add(this.refreshbutton);
             this.Controls.Add(this.refreshTextBox);

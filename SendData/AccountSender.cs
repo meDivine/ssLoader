@@ -111,16 +111,19 @@ namespace ssLoader.Arizona
                 #region ArizonaRP
                 // var arizonaFormat = new ArizonaFormat();
                 var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
+                var main = new Main();
                 foreach (var ARZ in brainburgGoods)
                 {
                     if (File.Exists($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json"))
                     {
                         var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json");
                         var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
+                        /* var text1 = File.ReadAllText($@"C:\Users\Fesenko.AP\source\repos\BUTCHERS228\ssLoader\bin\Debug\net5.0-windows\Config\Config.json");
+                         var result1 = JsonSerializer.Deserialize<Config>(text1);*/
                         int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
-                        int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
-                        int summMoney = price + carpr;
-                        await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                        int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, 0.6);
+                        
+                            MessageBox.Show($"{result.nick} ник | {result.money} | цена акк {price + carpr} | лвл {result.lvl} | Кары {carpr} | {result.cars}  | вирт {minifyLong(result.money)}");
                         successArizona++;
                     }
                     else continue;
