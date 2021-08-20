@@ -30,7 +30,7 @@ namespace ssLoader
 
             if (res == DialogResult.OK)
             {
-                pathLabel.Text = $"Path: {res}";
+                pathLabel.Text = $"Путь: {folderPath.SelectedPath}";
             }
             /*var Arizona = new Arizona.GetAccounts();
             
@@ -46,6 +46,7 @@ namespace ssLoader
             var accountSender = new AddAccount();
             var arzSend = new AccountSender();
             Task.Run(() => arzSend.SendToSS(folderPath.SelectedPath));
+            MessageBox.Show("Залив аккаунтов запущен\nПосле окончания появится окно со статистикой обработки","Успешный запуск");
             //string password = "Cfif1998";
             // Task.Run(() => accountSender.SendApi("1c96b8c2e30f007345c42825d556a0b1", "95.181.158.75:7777", "20", null, "Lucian_Butchers", password, null, "testcode", "test title"));
         }
@@ -75,6 +76,11 @@ namespace ssLoader
 
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pathLabel_Click(object sender, EventArgs e)
         {
 
         }

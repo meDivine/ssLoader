@@ -1,0 +1,142 @@
+﻿ГАЗ 3102:20000
+Honda CB 750:300000
+Scooter:30000
+Harley Chopper:935000
+MotoCross:30000
+SnowMobile:27000
+BMX:6000
+BTBike:5000
+ИЖ:40000
+Ducati Desmosed RR:2100000
+Suzuki Hayabusa:1400000
+Harley Fat Boy:820000
+Volvo 240:210000
+ЛУАЗ 969:80000
+ИЖ 2125 Комби:90000
+Audi 80:150000
+Ока:30000
+ЗАЗ 968М:25000
+ВАЗ 2115:210000
+ВАЗ 2108:145000
+Daewoo Lanos:280000
+ВАЗ 2106:120000
+АЗЛК-408:50000
+ИЖ 2717:50000
+ГАЗ 31105 «Волга»:350000
+УАЗ 452 «Буханка»:50000
+ВАЗ 2114:50000
+ВАЗ 2110:50000
+ВАЗ 2104:50000
+ВАЗ 2105:50000
+ГАЗ 66:50000
+Alfa Romeo 155:300000
+ИЖ 2712:50000
+Volvo 940:165000
+Mercedes-Benz W123:230000
+Peugeot 406:220000
+Jeep Grand Cherokee:320000
+ВАЗ 2101:100000
+ВАЗ 2107:115000
+ИЖ 27151:50000
+Газель Бизнес:225000
+ВАЗ 2109:190000
+Opel Ascona:130000
+УАЗ Hunter:180000
+ЕРАЗ-762:59300
+Ford Sierra:210000
+Volkswagen Golf:175000
+Mazda MX-5:1020000
+Nissan Silvia S15:1600000
+Mercedes-Benz W124 E500:2100000
+Lada Vesta:70000021
+Subaru WRX STI:1800000
+Nissan Skyline:730000
+Mercedes-Benz S600:1800000
+Volkswagen Golf:490000
+BMW M5 E60:2000000
+Niva Urban:410000
+BMW X6M E71:2600000
+Volkswagen Beetle:600000
+BMW X5M E70:2500000
+Volvo XC 90:680000
+Toyota Chaser:1100000
+Volkswagen Touareg:2000000
+BMW E38 740:1400000
+Toyota Mark II:1050000
+Toyota Camry v50:1700000
+Lexus IS200:1200000
+Honda Accord:990000
+Volkswagen Scirocco:1250000
+Lexus IS F:1800000
+Mazda 3 MPS:1230000
+MMC Lancer EVO:620000
+Opel Astra GTC:820000
+Skoda Octavia RS:330000
+Audi A4:1100000
+Mercedes-Benz Vito:650000
+BMW X5:1300000
+Mazda RX-7:460000
+Renault Logan:450000
+Honda Civic:970000
+Ford Raptor:2800000
+BMW E34:530000
+Ford Raptor:490000
+Ford Focus 3:900000
+BMW E30:490000
+Mercedes-Benz E55:780000
+ВАЗ 2170:300000
+BMW E39:1300000
+УАЗ Patriot:360000
+Toyota Supra:1230000
+BMW 540 F02:290000073
+Jeep Grand Cherokee Trackhawk:10400000
+Cadillac Escalade:11300000
+Mercedes-Benz 560 SEC:10000000
+Bugatti Chiron:5000000085
+Audi RS7:530000089
+Volvo XC90:315000092
+BMW X6M F16:420000094
+BMW M1:2200000005
+BMW Z4 M40 2019:800000006
+BMW M5 F90:1300000007
+Maserati Levante 2017:6000000
+BMW I8 Roadster:11500000
+Ferrari LaFerrari:12000000
+Tesla Model S:6000000
+BMW M4:4000000
+Mercedes-Benz G65 6x6:18000000
+Mercedes-Benz G65:5500000
+Audi Quattro:2000000
+Jaguar F-Type:4100000
+Porsche Panamera Turbo:8400000
+Lamborghini Huracan:14100000
+Audi Q7:5700000
+BMW M2:6300000
+Mercedes-Benz 4x4*2:12000000
+Mercedes-Benz G-Class W464:10000000
+Ford Mustang GT 50:5500000
+Mercedes-Benz W221 S63:3200000
+BMW X5 F15:3600000
+Mercedes-Maybach Pullman:25000000
+Lamborghini Urus:11500000
+Mercedes-Benz GLE63 Coupe:7100000
+Lexus LX570:7800000
+Porsche Cayenne:7000000
+Mercedes-Benz E63 AMG:4100000
+Audi RS-6 Avant:6000000
+Rolls-Royce Phantom:13000000
+Mercedes-Benz C63S:6000000
+Lamborghini Aventador:20000000
+Mercedes-Benz Maybach X222:13000000
+Kia Stinger GT:5800000
+Ferrari F12:11000000
+BMW G30:6000000
+Audi R8:8000000
+Toyota Land Cruiser 200:7000000
+Range Rover Vogue:8000000
+Dodge Challenger:4300000
+Rolls-Royce Wraith:13500000
+Nissan GT-R 35:6800000
+Bentley Bentyaga:12000000
+Porsche 911:12400000
+Porsche Boxster:3800000

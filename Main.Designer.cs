@@ -38,7 +38,7 @@ namespace ssLoader
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Licensingtext = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@ namespace ssLoader
             this.folderBrowse.Name = "folderBrowse";
             this.folderBrowse.Size = new System.Drawing.Size(94, 29);
             this.folderBrowse.TabIndex = 0;
-            this.folderBrowse.Text = "Browse";
+            this.folderBrowse.Text = "Сессия";
             this.folderBrowse.UseVisualStyleBackColor = true;
             this.folderBrowse.Click += new System.EventHandler(this.folderBrowse_Click);
             // 
@@ -57,9 +57,10 @@ namespace ssLoader
             this.pathLabel.AutoSize = true;
             this.pathLabel.Location = new System.Drawing.Point(12, 168);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(40, 20);
+            this.pathLabel.Size = new System.Drawing.Size(44, 20);
             this.pathLabel.TabIndex = 1;
-            this.pathLabel.Text = "Path:";
+            this.pathLabel.Text = "Путь:";
+            this.pathLabel.Click += new System.EventHandler(this.pathLabel_Click);
             // 
             // menuStrip1
             // 
@@ -69,7 +70,7 @@ namespace ssLoader
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(380, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(457, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -79,8 +80,8 @@ namespace ssLoader
             this.priceToolStripMenuItem,
             this.aPIKeyToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
-            this.fileToolStripMenuItem.Text = "Configurate";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
+            this.fileToolStripMenuItem.Text = "Конфигурация";
             // 
             // priceToolStripMenuItem
             // 
@@ -88,7 +89,7 @@ namespace ssLoader
             this.moneyToolStripMenuItem,
             this.levelToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.priceToolStripMenuItem.Text = "Цены";
             // 
             // moneyToolStripMenuItem
@@ -108,37 +109,37 @@ namespace ssLoader
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.aPIKeyToolStripMenuItem.Text = "Настройки";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(282, 189);
+            this.startButton.Location = new System.Drawing.Point(359, 189);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(86, 31);
             this.startButton.TabIndex = 3;
-            this.startButton.Text = "Start";
+            this.startButton.Text = "Начать";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // label1
+            // Licensingtext
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.Licensingtext.AutoSize = true;
+            this.Licensingtext.Location = new System.Drawing.Point(13, 34);
+            this.Licensingtext.Name = "Licensingtext";
+            this.Licensingtext.Size = new System.Drawing.Size(60, 20);
+            this.Licensingtext.TabIndex = 4;
+            this.Licensingtext.Text = "Привет";
+            this.Licensingtext.Click += new System.EventHandler(this.label1_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 253);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(457, 253);
+            this.Controls.Add(this.Licensingtext);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.folderBrowse);
@@ -165,7 +166,7 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem aPIKeyToolStripMenuItem;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.ToolStripMenuItem levelToolStripMenuItem;
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label Licensingtext;
     }
 }
 
