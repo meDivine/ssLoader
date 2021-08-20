@@ -14,7 +14,7 @@ namespace ssLoader.SampStoreAPI
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             return Convert.ToBase64String(plainTextBytes);
         }
-        public async Task SendApi(string key, string server, double price, string reg, string login, string password,
+        public async Task SendApi(string key, string server, int price, string reg, string login, string password,
             string code, string info, string title)
         {
             try
@@ -30,16 +30,11 @@ namespace ssLoader.SampStoreAPI
                     $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" +
                     $"&alogin={login}&password={password}" +
                     $"&code={code}&info={info}&tittle={title}");
-                using (var response = await request.GetResponseAsync())
-                {
-                    using (var stream = response.GetResponseStream())
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            var result = await reader.ReadToEndAsync();
-                        }
-                    }
-                }
+                using var response = await request.GetResponseAsync();
+                using var stream = response.GetResponseStream();
+                using var reader = new StreamReader(stream);
+                var result = await reader.ReadToEndAsync();
+                reader.Close();
             }
             catch (Exception ex)
             {

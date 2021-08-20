@@ -52,7 +52,8 @@ namespace ssLoader
 
         private void aPIKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Form config = new Config();
+            config.Show();
         }
 
         private void moneyToolStripMenuItem_Click(object sender, EventArgs e)

@@ -1,116 +1,116 @@
-﻿Mercedes MB AMG GT(Владелец):7600000
-Jeep Grand Cherokee(Владелец):2400000
-Ford Raptor(Владелец):3200000
-Audi RS6(Владелец):2700000
-Tesla S(Владелец):1800000
-Mercedes-Benz C63(Владелец):2200000
-Audi R8(Владелец):8100000
-Lexus LX(Владелец):4100000
-Lamborghini Huracan(Владелец):2800000
-BMW M4(Владелец):920000
-Porsche Panamera(Владелец):2400000
-RR Wraith(Владелец):1350000
-Mercedes-Benz G65(Владелец):5800000
-Chevrolet Suburban(Владелец):3100000
-BMW I8(Владелец):7500000
-BMW 530(Владелец):2500000
-Mercedes-Benz S63 AMG(Владелец):3000000
-Mustang GT(Владелец):3350000
-Audi RS7(Владелец):2000000
-Jaguar F Type(Владелец):2700000
-Nissan GTR 2015(Владелец):1700000
-MB S63 Cabbrio(Владелец):6900000
-Mercedes-Benz GL63(Владелец):2500000
-Lexus LC 500(Владелец):3200000
-Doodge Charger(Владелец):6000000
-Audi Q7(Владелец):1600000
-Mercedes-Benz E63(Владелец):1500000
-Porsche Cayman S(Владелец):3400000
-Lexus GS665(Владелец):5900000
-Mercedes-Benz CLA(Владелец):1150000
-BMW M6(Владелец):3800000
-Yamaha YZF-R6(Владелец):900000
-BMW X5M(Владелец):1100000
-Honda Elentra(Владелец):250000
-GAZ Gazel(Владелец):240000
-Ford Focus(Владелец):560000
-Lada Priora(Владелец):280000
-Infiniti G63 (Mercedes-Benz C36 Купе)(Владелец):900000
-Chevrolet Cruze(Владелец):190000
-Volkswagen GTI(Владелец):200000
-Skoda Rapid(Владелец):390000
-Honda Accord(Владелец):620000
-MB Vito(Владелец):520000
-Mercedes-Benz S600(Владелец):500000
-Mercedes-Benz E320(Владелец):390000
-Mazda 626 (Volkswagen)(Владелец):340000
-Citroen C4(Владелец):330000
-Porsche Cayenne(Владелец):320000
-Volkswagen Polo(Владелец):175000
-Honda Civic Type(Владелец):500000
-Mitsubishi Lanser(Владелец):590000
-Audi RS5(Владелец):2000000
-Tayota Camry(Владелец):1100000
-Lada Vesta(Владелец):210000
-Kavasaki ER5(Владелец):150000
-Freeway(Владелец):171000
-Moslvich(Владелец):119000
-Zhiguli(Владелец):90000
-Opel Kabet(Владелец):170000
-VAZ(Владелец):105000
-Walton(Владелец):100000
-Lada Samara(Владелец):50000
-Vaza Bukhanka(Владелец):75000
-Kavasaki(Владелец):500000
-Ford Focus(Владелец):270000
-Volga(Владелец):155000
-Niva(Владелец):140000
-Lada Pro-Sport(Владелец):150000
-Walton(Владелец):100000
-Sanchez(Владелец):110000
-Lada 2104(Владелец):85000
-Loaf(Владелец):78000
-OKA(Владелец):150000
-Hustler(Владелец):82000
-Lada Samara(Владелец):100000
-Moskvich(Владелец):75000
-GAZ(Владелец):205000
-Volvo(Владелец):200000
-Daweo Lanos(Владелец):500000
-Moskvich(Владелец):820000
-ZAZ(Владелец):40000
-Jupiter(Владелец):115000
-Renault Sandero(Владелец):800000
-ZAZ 968M(Владелец):35000
-Moskvich(Владелец):65000
-Zhiguli(Владелец):76000
-Volkswagen Transporter(Владелец):340000
-Tractor(Владелец):220000
-Bandito(Владелец):175000
-Bike(Владелец):12000
-BMX(Владелец):12000
-Utility Van(Владелец):3500000
-SCANIA(Владелец):7000000
-Enforcer(Владелец):7000000
-Newcvan(Владелец):4000000
-Ambulence(Владелец):4500000
-Auid Police(Владелец):6500000
-Ford Police(Владелец):5000000
-Hotknife(Владелец):3500000
-Golf Car(Владелец):2500000
-Pussia Kamaz(Владелец):6500000
-Wayfarer(Владелец):2400000
-Taxi(Владелец):2200000
-Uaral(Владелец):7000000
-Army Bus(Владелец):6500000
-Hummer(Владелец):5000000
-GAZ PATRIOT(Владелец):900000
-Sparrow(Владелец):6000000
-Maverick(Владелец):4000000
-Jetmax(Владелец):3300000
-Speeder(Владелец):1500000
-Reefer(Владелец):2500000
-Coastguard(Владелец):700000
-Dinghy(Владелец):180000
-Tropic(Владелец):8000000
-Squallo(Владелец):35000000
+﻿Mercedes MB AMG GT:7600000
+Jeep Grand Cherokee:2400000
+Ford Raptor:3200000
+Audi RS6:2700000
+Tesla S:1800000
+Mercedes-Benz C63:2200000
+Audi R8:8100000
+Lexus LX:4100000
+Lamborghini Huracan:2800000
+BMW M4:920000
+Porsche Panamera:2400000
+RR Wraith:1350000
+Mercedes-Benz G65:5800000
+Chevrolet Suburban:3100000
+BMW I8:7500000
+BMW 530:2500000
+Mercedes-Benz S63 AMG:3000000
+Mustang GT:3350000
+Audi RS7:2000000
+Jaguar F Type:2700000
+Nissan GTR 2015:1700000
+MB S63 Cabbrio:6900000
+Mercedes-Benz GL63:2500000
+Lexus LC 500:3200000
+Doodge Charger:6000000
+Audi Q7:1600000
+Mercedes-Benz E63:1500000
+Porsche Cayman S:3400000
+Lexus GS665:5900000
+Mercedes-Benz CLA:1150000
+BMW M6:3800000
+Yamaha YZF-R6:900000
+BMW X5M:1100000
+Honda Elentra:250000
+GAZ Gazel:240000
+Ford Focus:560000
+Lada Priora:280000
+Infiniti G63 (Mercedes-Benz C36 Купе):900000
+Chevrolet Cruze:190000
+Volkswagen GTI:200000
+Skoda Rapid:390000
+Honda Accord:620000
+MB Vito:520000
+Mercedes-Benz S600:500000
+Mercedes-Benz E320:390000
+Mazda 626 (Volkswagen):340000
+Citroen C4:330000
+Porsche Cayenne:320000
+Volkswagen Polo:175000
+Honda Civic Type:500000
+Mitsubishi Lanser:590000
+Audi RS5:2000000
+Tayota Camry:1100000
+Lada Vesta:210000
+Kavasaki ER5:150000
+Freeway:171000
+Moslvich:119000
+Zhiguli:90000
+Opel Kabet:170000
+VAZ:105000
+Walton:100000
+Lada Samara:50000
+Vaza Bukhanka:75000
+Kavasaki:500000
+Ford Focus:270000
+Volga:155000
+Niva:140000
+Lada Pro-Sport:150000
+Walton:100000
+Sanchez:110000
+Lada 2104:85000
+Loaf:78000
+OKA:150000
+Hustler:82000
+Lada Samara:100000
+Moskvich:75000
+GAZ:205000
+Volvo:200000
+Daweo Lanos:500000
+Moskvich:820000
+ZAZ:40000
+Jupiter:115000
+Renault Sandero:800000
+ZAZ 968M:35000
+Moskvich:65000
+Zhiguli:76000
+Volkswagen Transporter:340000
+Tractor:220000
+Bandito:175000
+Bike:12000
+BMX:12000
+Utility Van:3500000
+SCANIA:7000000
+Enforcer:7000000
+Newcvan:4000000
+Ambulence:4500000
+Auid Police:6500000
+Ford Police:5000000
+Hotknife:3500000
+Golf Car:2500000
+Pussia Kamaz:6500000
+Wayfarer:2400000
+Taxi:2200000
+Uaral:7000000
+Army Bus:6500000
+Hummer:5000000
+GAZ PATRIOT:900000
+Sparrow:6000000
+Maverick:4000000
+Jetmax:3300000
+Speeder:1500000
+Reefer:2500000
+Coastguard:700000
+Dinghy:180000
+Tropic:8000000
+Squallo:35000000

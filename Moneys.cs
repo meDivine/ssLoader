@@ -55,15 +55,13 @@ namespace ssLoader
                 jsonObj.RodinaRP = int.Parse(textBoxRodina.Text);
                 jsonObj.SampRP = int.Parse(textBoxSRP.Text);
                 jsonObj.TrinityRP = int.Parse(textBoxTrinity.Text);
-                using (StreamWriter file = File.CreateText(@$"{getCurrDir}\Config\Money.json"))
-                {
-                    Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
-                    serializer.Serialize(file, jsonObj);
-                }
+                using StreamWriter file = File.CreateText(@$"{getCurrDir}\Config\Money.json");
+                Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                serializer.Serialize(file, jsonObj);
             }
             catch (Exception e)
             {
-                MessageBox.Show("Введено не число", "Ошибка");
+                MessageBox.Show(e.Message, "Введено не число");
             }
 
         }
