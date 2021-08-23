@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using ssLoader.Arizona;
+using ssLoader.SampStoreAPI;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ssLoader.Arizona;
-using ssLoader.SampStoreAPI;
 
 namespace ssLoader
 {
@@ -16,13 +10,13 @@ namespace ssLoader
     {
         public Main()
         {
-           
+
             InitializeComponent();
-            
+
         }
 
         static FolderBrowserDialog folderPath = new FolderBrowserDialog();
-        
+
         private void folderBrowse_Click(object sender, EventArgs e)
         {
             var accountSender = new AddAccount();
@@ -38,7 +32,7 @@ namespace ssLoader
             {
                 MessageBox.Show(test);
             }*/
-           
+
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -46,7 +40,7 @@ namespace ssLoader
             var accountSender = new AddAccount();
             var arzSend = new AccountSender();
             Task.Run(() => arzSend.SendToSS(folderPath.SelectedPath));
-            MessageBox.Show("Залив аккаунтов запущен\nПосле окончания появится окно со статистикой обработки","Успешный запуск");
+            MessageBox.Show("Залив аккаунтов запущен\nПосле окончания появится окно со статистикой обработки", "Успешный запуск");
             //string password = "Cfif1998";
             // Task.Run(() => accountSender.SendApi("1c96b8c2e30f007345c42825d556a0b1", "95.181.158.75:7777", "20", null, "Lucian_Butchers", password, null, "testcode", "test title"));
         }
@@ -65,7 +59,7 @@ namespace ssLoader
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void levelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,6 +77,28 @@ namespace ssLoader
         private void pathLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            timeEnd.Text = "Окончание: " + UnixTimeToDateTime(long.Parse(Start.KeyAuthApp.user_data.subscriptions[0].expiry));
+        }
+        public DateTime UnixTimeToDateTime(long unixtime)
+        {
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local);
+            dtDateTime = dtDateTime.AddSeconds(unixtime).ToLocalTime();
+            return dtDateTime;
+        }
+
+        private void коэффМашинToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Coeffoc = new Coeffic();
+            Coeffoc.Show();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://t.me/sampstoreloader");
         }
     }
 }

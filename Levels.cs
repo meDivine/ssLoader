@@ -1,13 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ssLoader
@@ -40,25 +33,25 @@ namespace ssLoader
             textBoxSampRP.Text = lvl.SampRP.ToString();
             textBoxTrinityRP.Text = lvl.TrinityRP.ToString();
         }
-        private async void OnReload()
+        private  void OnReload()
         {
             try
             {
                 string json = File.ReadAllText(@$"{getCurrDir}\Config\Levels.json");
-                dynamic jsonObj = JsonConvert.DeserializeObject<Levels>(json);
-                jsonObj.ArizonaRP = textBoxArizonaRP.Text;
-                jsonObj.AdvanceRP = textBoxAdvanceRP.Text;
-                jsonObj.AmazingRP = textBoxAmazingRP.Text;
-                jsonObj.DiamondRP = textBoxDiamondRP.Text;
-                jsonObj.EvolveRP = textBoxEvolveRP.Text;
-                jsonObj.GTARP = textBoxGTARP.Text;
-                jsonObj.RadmirRP = textBoxRadmirRP.Text;
-                jsonObj.RodinaRP = textBoxRodinaRP.Text;
-                jsonObj.SampRP = textBoxSampRP.Text;
-                jsonObj.TrinityRP = textBoxTrinityRP.Text;
+                dynamic jsonObj = JsonConvert.DeserializeObject<Json.Level>(json);
+                jsonObj.ArizonaRP = int.Parse(textBoxArizonaRP.Text);
+                jsonObj.AdvanceRP = int.Parse(textBoxAdvanceRP.Text);
+                jsonObj.AmazingRP = int.Parse(textBoxAmazingRP.Text);
+                jsonObj.DiamondRP = int.Parse(textBoxDiamondRP.Text);
+                jsonObj.EvolveRP = int.Parse(textBoxEvolveRP.Text);
+                jsonObj.GTARP = int.Parse(textBoxGTARP.Text);
+                jsonObj.RadmirRP = int.Parse(textBoxRadmirRP.Text);
+                jsonObj.RodinaRP = int.Parse(textBoxRodinaRP.Text);
+                jsonObj.SampRP = int.Parse(textBoxSampRP.Text);
+                jsonObj.TrinityRP = int.Parse(textBoxTrinityRP.Text);
                 using StreamWriter file = File.CreateText(@$"{getCurrDir}\Config\Levels.json");
                 Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
-                await serializer.Serialize(file, jsonObj);
+                 serializer.Serialize(file, jsonObj);
             }
             catch (Exception e)
             {

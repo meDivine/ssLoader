@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ssLoader.SampStoreAPI
 {
@@ -23,25 +22,25 @@ namespace ssLoader.SampStoreAPI
         public async Task<string> SendApi(string key, string server, int price, string reg, string login, string password,
             string code, string info, string title)
         {
-            
-                /*var streamReader = new StreamReader((await WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
-                                                                             $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" + 
-                                                                             $"&alogin={login}&password={password}" + 
-                                                                             $"&code={code}&info={info}&tittle={title}".Split('|')).GetResponseAsync()).GetResponseStream()!);
-                var result = await streamReader.ReadToEndAsync();
-                using var webClient = new WebClient(); 
-                streamReader.Close();*/
-               
-                var request = WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
-                    $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" +
-                    $"&alogin={login}&password={password}" +
-                    $"&code={code}&info={info}&tittle={title}");
-                using var response = await request.GetResponseAsync();
-                await using var stream = response.GetResponseStream();
-                using var reader = new StreamReader(stream);
-                var result = await reader.ReadToEndAsync();
-                reader.Close();
-                return result;
+
+            /*var streamReader = new StreamReader((await WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
+                                                                         $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" + 
+                                                                         $"&alogin={login}&password={password}" + 
+                                                                         $"&code={code}&info={info}&tittle={title}".Split('|')).GetResponseAsync()).GetResponseStream()!);
+            var result = await streamReader.ReadToEndAsync();
+            using var webClient = new WebClient(); 
+            streamReader.Close();*/
+
+            var request = WebRequest.Create("https://samp-store.ru/ajax/api.php?" +
+                $"method=add_account&version=15&key={key}&server={server}&price={price}&reg={reg}" +
+                $"&alogin={login}&password={password}" +
+                $"&code={code}&info={info}&tittle={title}");
+            using var response = await request.GetResponseAsync();
+            await using var stream = response.GetResponseStream();
+            using var reader = new StreamReader(stream);
+            var result = await reader.ReadToEndAsync();
+            reader.Close();
+            return result;
         }
     }
 }

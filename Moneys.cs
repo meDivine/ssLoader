@@ -1,15 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ssLoader.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ssLoader
@@ -23,7 +15,7 @@ namespace ssLoader
         }
         private string getCurrDir = Directory.GetCurrentDirectory();
 
-        private async void OnStart() 
+        private async void OnStart()
         {
             using FileStream moneyFile = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
             var prices = await System.Text.Json.JsonSerializer.DeserializeAsync<Money>(moneyFile);
@@ -36,7 +28,7 @@ namespace ssLoader
             textBoxRadmir.Text = prices.RadmirRP.ToString();
             textBoxRodina.Text = prices.RodinaRP.ToString();
             textBoxSRP.Text = prices.SampRP.ToString();
-            textBoxTrinity.Text  = prices.TrinityRP.ToString();
+            textBoxTrinity.Text = prices.TrinityRP.ToString();
         }
 
         private void OnReload()

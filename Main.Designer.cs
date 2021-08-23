@@ -36,15 +36,18 @@ namespace ssLoader
             this.priceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.коэффМашинToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
-            this.Licensingtext = new System.Windows.Forms.Label();
+            this.timeEnd = new System.Windows.Forms.Label();
+            this.versions = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // folderBrowse
             // 
-            this.folderBrowse.Location = new System.Drawing.Point(12, 191);
+            this.folderBrowse.Location = new System.Drawing.Point(12, 98);
             this.folderBrowse.Name = "folderBrowse";
             this.folderBrowse.Size = new System.Drawing.Size(94, 29);
             this.folderBrowse.TabIndex = 0;
@@ -55,7 +58,7 @@ namespace ssLoader
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(12, 168);
+            this.pathLabel.Location = new System.Drawing.Point(12, 75);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(44, 20);
             this.pathLabel.TabIndex = 1;
@@ -87,7 +90,8 @@ namespace ssLoader
             // 
             this.priceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.moneyToolStripMenuItem,
-            this.levelToolStripMenuItem});
+            this.levelToolStripMenuItem,
+            this.коэффМашинToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
             this.priceToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.priceToolStripMenuItem.Text = "Цены";
@@ -95,16 +99,23 @@ namespace ssLoader
             // moneyToolStripMenuItem
             // 
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
-            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
             this.moneyToolStripMenuItem.Text = "Валюта";
             this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
             // 
             // levelToolStripMenuItem
             // 
             this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
             this.levelToolStripMenuItem.Text = "Уровни";
             this.levelToolStripMenuItem.Click += new System.EventHandler(this.levelToolStripMenuItem_Click);
+            // 
+            // коэффМашинToolStripMenuItem
+            // 
+            this.коэффМашинToolStripMenuItem.Name = "коэффМашинToolStripMenuItem";
+            this.коэффМашинToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
+            this.коэффМашинToolStripMenuItem.Text = "Коэфф. Машин";
+            this.коэффМашинToolStripMenuItem.Click += new System.EventHandler(this.коэффМашинToolStripMenuItem_Click);
             // 
             // aPIKeyToolStripMenuItem
             // 
@@ -115,7 +126,7 @@ namespace ssLoader
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(359, 189);
+            this.startButton.Location = new System.Drawing.Point(359, 96);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(86, 31);
@@ -124,22 +135,43 @@ namespace ssLoader
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // Licensingtext
+            // timeEnd
             // 
-            this.Licensingtext.AutoSize = true;
-            this.Licensingtext.Location = new System.Drawing.Point(13, 34);
-            this.Licensingtext.Name = "Licensingtext";
-            this.Licensingtext.Size = new System.Drawing.Size(60, 20);
-            this.Licensingtext.TabIndex = 4;
-            this.Licensingtext.Text = "Привет";
-            this.Licensingtext.Click += new System.EventHandler(this.label1_Click);
+            this.timeEnd.AutoSize = true;
+            this.timeEnd.Location = new System.Drawing.Point(12, 55);
+            this.timeEnd.Name = "timeEnd";
+            this.timeEnd.Size = new System.Drawing.Size(90, 20);
+            this.timeEnd.TabIndex = 4;
+            this.timeEnd.Text = "Окончание:";
+            // 
+            // versions
+            // 
+            this.versions.AutoSize = true;
+            this.versions.Location = new System.Drawing.Point(12, 130);
+            this.versions.Name = "versions";
+            this.versions.Size = new System.Drawing.Size(39, 20);
+            this.versions.TabIndex = 5;
+            this.versions.Text = "v 1.0";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(12, 153);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(126, 20);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Telegram channel";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 253);
-            this.Controls.Add(this.Licensingtext);
+            this.ClientSize = new System.Drawing.Size(457, 182);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.versions);
+            this.Controls.Add(this.timeEnd);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.folderBrowse);
@@ -148,6 +180,7 @@ namespace ssLoader
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "SS-LOADER | by Divine";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -166,7 +199,10 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem aPIKeyToolStripMenuItem;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.ToolStripMenuItem levelToolStripMenuItem;
-        public System.Windows.Forms.Label Licensingtext;
+        private System.Windows.Forms.Label timeEnd;
+        private System.Windows.Forms.ToolStripMenuItem коэффМашинToolStripMenuItem;
+        private System.Windows.Forms.Label versions;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

@@ -61,22 +61,22 @@ namespace ssLoader.Arizona
             if (value >= 0 && value <= 1000)
                 return (value / 1D).ToString("0.#") + " вирт $";
             if (value >= 1000 && value <= 10000)
-                return (value / 1000D).ToString("#.0") + " к $";
+                return (value / 1000D).ToString("#.0") + " тыс. $";
 
             if (value >= 10000 && value <= 100000)
-                return (value / 1000D).ToString("#.0") + " к $";
+                return (value / 1000D).ToString("#.0") + " тыс. $";
             if (value >= 100000 && value <= 1000000)
-                return (value / 1000D).ToString("#.0") + " к $";
+                return (value / 1000D).ToString("#.0") + " тыс. $";
 
             if (value >= 1000000 && value <= 10000000)
-                return (value / 1000000D).ToString("#.0") + " кк $";
+                return (value / 1000000D).ToString("#.0") + " млн. $";
             if (value >= 10000000 && value <= 100000000)
-                return (value / 1000000D).ToString("#.0") + " кк $";
+                return (value / 1000000D).ToString("#.0") + " млн. $";
 
             if (value >= 100000000 && value <= 1000000000)
-                return (value / 1000000D).ToString("#.0") + " кк $";
+                return (value / 1000000D).ToString("#.0") + " млн. $";
             if (value >= 1000000000 && value <= 10000000000)
-                return (value / 10000000D).ToString("#.0") + " кк $";
+                return (value / 10000000D).ToString("#.0") + " млн. $";
 
             return value.ToString("#.0");
         }
@@ -86,7 +86,7 @@ namespace ssLoader.Arizona
             if (str == "Нет" || str == "нет" || str == null || str == "Не удалось определить")
                 return "";
             else
-                return $"[ Авто: {str.Replace("\n", " ").Replace("(Владелец)", "").Replace("[Не припарковано]", "").Replace("\t", " ").Replace("загружается при входе", "").Replace("-", "")}]";
+                return $"[ Авто: {str.Replace("\n", " ").Replace("(Владелец)", "").Replace("[Не припарковано]", "").Replace("\t", " ").Replace("загружается при входе", "").Replace("-", "").Replace("(Владелец[Не припарковано]", "")}]";
         }
 
         public async Task SendToSS(string path)
@@ -134,7 +134,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Brainburg] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -164,7 +164,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Chandler] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -193,7 +193,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Gilbert] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -221,7 +221,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Glendale] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -251,7 +251,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Kingman] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -280,7 +280,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Mesa] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -309,7 +309,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Payson] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -338,7 +338,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Phoenix] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -367,7 +367,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Prescott] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -399,7 +399,7 @@ namespace ssLoader.Arizona
                                 int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                                 int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                                 int summMoney = price + carpr;
-                                var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                               var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                                 if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                                 {
                                     Log.Error($"[ARZ - Red Rock] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -428,7 +428,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Saint Rose] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -457,7 +457,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Scottdale] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -488,7 +488,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Surprise] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -517,7 +517,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Tucson] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -545,7 +545,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Winslow] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -573,7 +573,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Yuma] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -603,7 +603,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARP - Blue] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -632,7 +632,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARP - Red] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -661,7 +661,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARZ - Lime] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -689,7 +689,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[ARP - Green] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -716,8 +716,8 @@ namespace ssLoader.Arizona
                         {
                             var text = File.ReadAllText($@"{path}\Samp RP\Revolution\goods\{SRP}.json");
                             var result = JsonSerializer.Deserialize<SampRPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.SampRP, moneyPrice.SampRP, levelPrice.SampRP);  
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, price, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках"));
+                            int price = CountPrice(result.money, result.lvl, startPrice.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
+                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, price, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[SRP - Revo] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -825,7 +825,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 01] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -853,7 +853,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 02] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -881,7 +881,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 03] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -909,7 +909,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 04] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -937,7 +937,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 05] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -965,7 +965,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 06] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -993,7 +993,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 07] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1021,7 +1021,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 08] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1049,7 +1049,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 09] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1077,7 +1077,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 10] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1105,7 +1105,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 11] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1133,7 +1133,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 12] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1161,7 +1161,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Radmir - 13] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1191,7 +1191,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
                             int carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Diamond - Emerald] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1219,7 +1219,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
                             int carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Diamond - Trilliant] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1247,7 +1247,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
                             int carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Diamond - Ruby] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1277,7 +1277,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
                             int carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Evolve RP - 01] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1305,7 +1305,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
                             int carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Evolve RP - 02] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1333,7 +1333,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
                             int carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Evolve RP - 03] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1363,7 +1363,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Rodina RP - ВО] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1391,7 +1391,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Rodina RP - СО] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1419,7 +1419,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Rodina RP - ЦО] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1447,7 +1447,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Rodina RP - ЮО] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1477,7 +1477,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
                             int carpr = CarPrice(result.cars, "Trinity", moneyPrice.TrinityRP, carPrice.TrinityRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Trinity - 01] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1505,7 +1505,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
                             int carpr = CarPrice(result.cars, "Trinity", moneyPrice.TrinityRP, carPrice.TrinityRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[Trinity - 02] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1535,7 +1535,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
                             int carpr = CarPrice(result.cars, "GTARP", moneyPrice.GTARP, carPrice.GTARP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[GTA RP - #1] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1563,7 +1563,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
                             int carpr = CarPrice(result.cars, "GTARP", moneyPrice.GTARP, carPrice.GTARP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[GTA RP - #2] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1593,7 +1593,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[AMAZING RP - RED] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1621,7 +1621,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[AMAZING RP - YELLOW] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1649,7 +1649,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[AMAZING RP - GREEN] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1678,7 +1678,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[AMAZING RP - AZURE] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1706,7 +1706,7 @@ namespace ssLoader.Arizona
                             int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
-                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках {carsInfiTitle(result.cars)}"));
+                           var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
                                 Log.Error($"[AMAZING RP - SILVER] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -1731,7 +1731,7 @@ namespace ssLoader.Arizona
             finally
             {
                 int allaccs = successArizona + successAdvance + successAmazing + successDiamond + successEvolve + successGTARP + successRadmir + successRodina + successSRP + successTrinity;
-                MessageBox.Show($"Залито: \nArizona RP {successArizona}\nAdvance RP {successAdvance}\nSamp-RP {successSRP}]\nRadmir-RP {successRadmir}\nDiamond-RP {successDiamond}\nEvolve-RP {successEvolve}\nRodina-RP {successRodina}\nTrinity-RP {successTrinity}\nGTA-RP {successGTARP}\nAmazing-RP {successAmazing}\nВсего - {allaccs}", "Обработка завершена", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
+                MessageBox.Show($"Залито: \nArizona RP {successArizona}\nAdvance RP {successAdvance}\nSamp-RP {successSRP}\nRadmir-RP {successRadmir}\nDiamond-RP {successDiamond}\nEvolve-RP {successEvolve}\nRodina-RP {successRodina}\nTrinity-RP {successTrinity}\nGTA-RP {successGTARP}\nAmazing-RP {successAmazing}\nВсего - {allaccs}", "Обработка завершена", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
             }
         }
     }

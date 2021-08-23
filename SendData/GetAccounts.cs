@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ssLoader.Arizona
 {
@@ -340,7 +335,7 @@ namespace ssLoader.Arizona
                 new System.IO.StreamReader($@"{path}\Advance RP\Red\goods\ALL_GOODS.txt");
             while ((line = file.ReadLine()) != null)
             {
-                
+
                 var output = line.Substring(0, line.IndexOf(':'));
                 accs.Add(output);
             }
