@@ -43,6 +43,7 @@ namespace ssLoader
             this.timeEnd = new System.Windows.Forms.Label();
             this.versions = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.конфигЗаливаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +83,7 @@ namespace ssLoader
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.priceToolStripMenuItem,
+            this.конфигЗаливаToolStripMenuItem,
             this.aPIKeyToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(125, 24);
@@ -173,6 +175,13 @@ namespace ssLoader
             this.linkLabel1.Text = "Telegram channel";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // конфигЗаливаToolStripMenuItem
+            // 
+            this.конфигЗаливаToolStripMenuItem.Name = "конфигЗаливаToolStripMenuItem";
+            this.конфигЗаливаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.конфигЗаливаToolStripMenuItem.Text = "Конфиг Залива";
+            this.конфигЗаливаToolStripMenuItem.Click += new System.EventHandler(this.конфигЗаливаToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -213,6 +222,7 @@ namespace ssLoader
         private System.Windows.Forms.Label versions;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ToolStripMenuItem начальныеЦеныToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem конфигЗаливаToolStripMenuItem;
     }
 }
 

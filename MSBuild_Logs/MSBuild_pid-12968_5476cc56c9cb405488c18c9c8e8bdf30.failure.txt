@@ -1,0 +1,15 @@
+UNHANDLED EXCEPTIONS FROM PROCESS 12968:
+=====================
+8/23/2021 6:24:31 PM
+System.UnauthorizedAccessException: Отказано в доступе по пути "C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\MSBuild_Logs".
+   в System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   в System.IO.Directory.InternalCreateDirectory(String fullPath, String path, Object dirSecurityObj, Boolean checkHost)
+   в System.IO.Directory.InternalCreateDirectoryHelper(String path, Boolean checkHost)
+   в Microsoft.Build.Shared.ExceptionHandling.DumpExceptionToFile(Exception ex)
+   в Microsoft.Build.BackEnd.NodeEndpointOutOfProcBase.RunReadLoop(Stream localReadPipe, Stream localWritePipe, ConcurrentQueue`1 localPacketQueue, AutoResetEvent localPacketAvailable, AutoResetEvent localTerminatePacketPump)
+   в Microsoft.Build.BackEnd.NodeEndpointOutOfProcBase.PacketPumpProc()
+   в System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   в System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   в System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   в System.Threading.ThreadHelper.ThreadStart()
+===================

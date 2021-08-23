@@ -106,5 +106,11 @@ namespace ssLoader
             Form StartPrice = new StartPrice();
             StartPrice.Show();
         }
+
+        private void конфигЗаливаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form ServConfigs = new ServConfigs();
+            ServConfigs.Show(); 
+        }
     }
 }
