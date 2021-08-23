@@ -247,6 +247,22 @@ namespace ssLoader.Arizona
             file.Close();
             return accs;
         }
+
+        public List<string> CheckNameArizonaShowLow(string path)
+        {
+            string line;
+            var accs = new List<string>();
+            if (!File.Exists($@"{path}\Arizona RP\Show Low\goods\ALL_GOODS.txt")) return null;
+            var file =
+                new System.IO.StreamReader($@"{path}\Arizona RP\Show Low\goods\ALL_GOODS.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                var output = line.Substring(0, line.IndexOf(':'));
+                accs.Add(output);
+            }
+            file.Close();
+            return accs;
+        }
         #endregion
         #region SampRP
         public List<string> CheckNameSrpZerotwo(string path)
