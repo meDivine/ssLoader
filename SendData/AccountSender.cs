@@ -24,12 +24,15 @@ namespace ssLoader.Arizona
         int successTrinity = 0;
         int successGTARP = 0;
         int successAmazing = 0;
+        private int arizonasmoney = 0;
+        
 
-        private int CountPrice(float money, int lvl, int startprice, int typeMoney, int typeLevel)
+
+        private int CountPrice(float money, int lvl, int MoneyStart, int typeMoney, int typeLevel)
         {
             var moneyCount = (money / 1000000.0) * typeMoney;
             var levelCount = lvl * typeLevel;
-            int result = startprice + levelCount + (int)moneyCount;
+            int result = MoneyStart + levelCount + (int)moneyCount;
             return result;
         }
 
@@ -98,7 +101,7 @@ namespace ssLoader.Arizona
                 var accountSender = new AddAccount();
                 // var config = new Json.Config();
                 //var priceLevel = new Level();
-                //var priceStart = new StartPrice();
+                //var priceStart = new MoneyStart();
                 #endregion
 
                 #region Десериализация json файлов
@@ -111,8 +114,8 @@ namespace ssLoader.Arizona
                 using FileStream levelPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Levels.json");
                 var levelPrice = await JsonSerializer.DeserializeAsync<Level>(levelPriceJson);
 
-                using FileStream startPriceJson = File.OpenRead(@$"{getCurrDir}\Config\StartPrice.json");
-                var startPrice = await JsonSerializer.DeserializeAsync<StartPrice>(startPriceJson);
+                using FileStream MoneyStartJson = File.OpenRead(@$"{getCurrDir}\Config\MoneyStart.json");
+                var MoneyStart = await JsonSerializer.DeserializeAsync<MoneyStart>(MoneyStartJson);
 
                 using FileStream carPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Cars\Coefficient.json");
                 var carPrice = await JsonSerializer.DeserializeAsync<Prices>(carPriceJson);
@@ -130,8 +133,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Brainburg\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                             var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -160,8 +163,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Chandler\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Chandler\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -189,8 +192,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Gilbert\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Gilbert\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -217,8 +220,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Glendale\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Glendale\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -247,8 +250,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Kingman\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Kingman\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -276,8 +279,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Mesa\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Mesa\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -305,8 +308,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Payson\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Payson\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -334,8 +337,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Phoenix\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Phoenix\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -363,8 +366,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Prescott\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Prescott\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -395,8 +398,8 @@ namespace ssLoader.Arizona
                             if (File.Exists($@"{path}\Arizona RP\Red Rock\goods\{ARZ}.json"))
                             {
                                 var text = File.ReadAllText($@"{path}\Arizona RP\Red Rock\goods\{ARZ}.json");
-                                var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                                int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                                var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                                int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                                 int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                                 int summMoney = price + carpr;
                                var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -424,8 +427,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Saint Rose\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Saint Rose\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -453,8 +456,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Scottdale\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Scottdale\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -484,8 +487,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Surprise\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Surprise\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -513,8 +516,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Tucson\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Tucson\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -541,8 +544,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Winslow\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Winslow\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -569,8 +572,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Arizona RP\Yuma\goods\{ARZ}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Arizona RP\Yuma\goods\{ARZ}.json");
-                            var result = JsonSerializer.Deserialize<ArizonaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
                             int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -599,8 +602,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Advance RP\Blue\goods\{ARP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Advance RP\Blue\goods\{ARP}.json");
-                            var result = JsonSerializer.Deserialize<AdvanceFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -628,8 +631,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Advance RP\Red\goods\{ARP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Advance RP\Red\goods\{ARP}.json");
-                            var result = JsonSerializer.Deserialize<AdvanceFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -657,8 +660,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Advance RP\Lime\goods\{ARP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Advance RP\Lime\goods\{ARP}.json");
-                            var result = JsonSerializer.Deserialize<AdvanceFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -685,8 +688,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Advance RP\Green\goods\{ARP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Advance RP\Green\goods\{ARP}.json");
-                            var result = JsonSerializer.Deserialize<AdvanceFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
                             int carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -715,8 +718,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Samp RP\Revolution\goods\{SRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Samp RP\Revolution\goods\{SRP}.json");
-                            var result = JsonSerializer.Deserialize<SampRPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
                             var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, price, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
@@ -741,8 +744,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Samp RP\02\goods\{SRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Samp RP\02\goods\{SRP}.json");
-                            var result = JsonSerializer.Deserialize<SampRPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
                             var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, price, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
@@ -767,8 +770,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Samp RP\Legacy\goods\{SRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Samp RP\Legacy\goods\{SRP}.json");
-                            var result = JsonSerializer.Deserialize<SampRPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
                             var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, price, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
@@ -793,8 +796,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Samp RP\Classic\goods\{SRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Samp RP\Classic\goods\{SRP}.json");
-                            var result = JsonSerializer.Deserialize<SampRPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
                             var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, price, null, result.nick, result.password, "", jsonConfig.seller_message, $" {result.lvl} уровень | {MinifyLong(result.money)} на руках"));
                             if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                             {
@@ -821,8 +824,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 1\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 1\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -849,8 +852,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 2\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 2\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -877,8 +880,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 3\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 3\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -905,8 +908,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 4\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 4\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -933,8 +936,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 5\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 5\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -961,8 +964,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 6\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 6\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -989,8 +992,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 7\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 7\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1017,8 +1020,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 8\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 8\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1045,8 +1048,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 9\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 9\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1073,8 +1076,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 10\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 10\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1101,8 +1104,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 11\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 11\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1129,8 +1132,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 12\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 12\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1157,8 +1160,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Radmir RP\Server 13\goods\{RDR}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Radmir RP\Server 13\goods\{RDR}.json");
-                            var result = JsonSerializer.Deserialize<RadmirFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
                             int carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1187,8 +1190,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Diamond RP\Emerald\goods\{DRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Diamond RP\Emerald\goods\{DRP}.json");
-                            var result = JsonSerializer.Deserialize<DiamondFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
                             int carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1215,8 +1218,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Diamond RP\Trilliant\goods\{DRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Diamond RP\Trilliant\goods\{DRP}.json");
-                            var result = JsonSerializer.Deserialize<DiamondFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
                             int carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1243,8 +1246,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Diamond RP\Trilliant\goods\{DRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Diamond RP\Trilliant\goods\{DRP}.json");
-                            var result = JsonSerializer.Deserialize<DiamondFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
                             int carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1273,8 +1276,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Evolve RP\01\goods\{ERP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Evolve RP\01\goods\{ERP}.json");
-                            var result = JsonSerializer.Deserialize<EvolveFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
                             int carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1301,8 +1304,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Evolve RP\01\goods\{ERP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Evolve RP\01\goods\{ERP}.json");
-                            var result = JsonSerializer.Deserialize<EvolveFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
                             int carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1329,8 +1332,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Evolve RP\03\goods\{ERP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Evolve RP\03\goods\{ERP}.json");
-                            var result = JsonSerializer.Deserialize<EvolveFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
                             int carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1359,8 +1362,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Rodina RP\Восточный Округ\goods\{RRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Rodina RP\Восточный Округ\goods\{RRP}.json");
-                            var result = JsonSerializer.Deserialize<RodinaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1387,8 +1390,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Rodina RP\Северный Округ\goods\{RRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Rodina RP\Северный Округ\goods\{RRP}.json");
-                            var result = JsonSerializer.Deserialize<RodinaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1415,8 +1418,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Rodina RP\Центральный Округ\goods\{RRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Rodina RP\Центральный Округ\goods\{RRP}.json");
-                            var result = JsonSerializer.Deserialize<RodinaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1443,8 +1446,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Rodina RP\Южный Округ\goods\{RRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Rodina RP\Южный Округ\goods\{RRP}.json");
-                            var result = JsonSerializer.Deserialize<RodinaFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
                             int carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1473,8 +1476,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Trinity RP\01\goods\{TRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Trinity RP\01\goods\{TRP}.json");
-                            var result = JsonSerializer.Deserialize<TrinityFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
                             int carpr = CarPrice(result.cars, "Trinity", moneyPrice.TrinityRP, carPrice.TrinityRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1501,8 +1504,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Trinity RP\02\goods\{TRP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Trinity RP\02\goods\{TRP}.json");
-                            var result = JsonSerializer.Deserialize<TrinityFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
                             int carpr = CarPrice(result.cars, "Trinity", moneyPrice.TrinityRP, carPrice.TrinityRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1531,8 +1534,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\GTA RP\#1\goods\{GTARP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\GTA RP\#1\goods\{GTARP}.json");
-                            var result = JsonSerializer.Deserialize<GTARPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
                             int carpr = CarPrice(result.cars, "GTARP", moneyPrice.GTARP, carPrice.GTARP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1559,8 +1562,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\GTA RP\#2\goods\{GTARP}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\GTA RP\#2\goods\{GTARP}.json");
-                            var result = JsonSerializer.Deserialize<GTARPFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
                             int carpr = CarPrice(result.cars, "GTARP", moneyPrice.GTARP, carPrice.GTARP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1589,8 +1592,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Amazing RP\Red\goods\{Amazing}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Amazing RP\Red\goods\{Amazing}.json");
-                            var result = JsonSerializer.Deserialize<AmazingFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1617,8 +1620,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Amazing RP\Yellow\goods\{Amazing}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Amazing RP\Yellow\goods\{Amazing}.json");
-                            var result = JsonSerializer.Deserialize<AmazingFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1645,8 +1648,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Amazing RP\Green\goods\{Amazing}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Amazing RP\Green\goods\{Amazing}.json");
-                            var result = JsonSerializer.Deserialize<AmazingFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1674,8 +1677,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Amazing RP\Azure\goods\{Amazing}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Amazing RP\Azure\goods\{Amazing}.json");
-                            var result = JsonSerializer.Deserialize<AmazingFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
@@ -1702,8 +1705,8 @@ namespace ssLoader.Arizona
                         if (File.Exists($@"{path}\Amazing RP\Silver\goods\{Amazing}.json"))
                         {
                             var text = File.ReadAllText($@"{path}\Amazing RP\Silver\goods\{Amazing}.json");
-                            var result = JsonSerializer.Deserialize<AmazingFormat>(text.Replace("\r\n", ""));
-                            int price = CountPrice(result.money, result.lvl, startPrice.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
+                            var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                            int price = CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
                             int carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
                             int summMoney = price + carpr;
                            var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));

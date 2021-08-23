@@ -1,6 +1,6 @@
 ﻿namespace ssLoader.Json
 {
-    class ArizonaFormat
+    class AccountFormat
     {
         public string nick { get; set; }
         public int lvl { get; set; }

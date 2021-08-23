@@ -81,7 +81,7 @@ namespace ssLoader
 
         private void Main_Load(object sender, EventArgs e)
         {
-            timeEnd.Text = "Окончание: " + UnixTimeToDateTime(long.Parse(Start.KeyAuthApp.user_data.subscriptions[0].expiry));
+           // timeEnd.Text = "Окончание: " + UnixTimeToDateTime(long.Parse(Start.KeyAuthApp.user_data.subscriptions[0].expiry));
         }
         public DateTime UnixTimeToDateTime(long unixtime)
         {
@@ -99,6 +99,12 @@ namespace ssLoader
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://t.me/sampstoreloader");
+        }
+
+        private void начальныеЦеныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form StartPrice = new StartPrice();
+            StartPrice.Show();
         }
     }
 }

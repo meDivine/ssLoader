@@ -14,11 +14,7 @@ namespace ssLoader.SampStoreAPI
             return Convert.ToBase64String(plainTextBytes);
         }
         string currDir = Directory.GetCurrentDirectory();
-        private string RandomProxy()
-        {
-            string[] s = File.ReadAllLines($@"{currDir}\proxy.txt", Encoding.Default);
-            return s[new Random().Next(s.Length)];
-        }
+      
         public async Task<string> SendApi(string key, string server, int price, string reg, string login, string password,
             string code, string info, string title)
         {

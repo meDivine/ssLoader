@@ -37,6 +37,7 @@ namespace ssLoader
             this.moneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.коэффМашинToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.начальныеЦеныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
             this.timeEnd = new System.Windows.Forms.Label();
@@ -91,36 +92,44 @@ namespace ssLoader
             this.priceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.moneyToolStripMenuItem,
             this.levelToolStripMenuItem,
-            this.коэффМашинToolStripMenuItem});
+            this.коэффМашинToolStripMenuItem,
+            this.начальныеЦеныToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.priceToolStripMenuItem.Text = "Цены";
             // 
             // moneyToolStripMenuItem
             // 
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
-            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.moneyToolStripMenuItem.Text = "Валюта";
             this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
             // 
             // levelToolStripMenuItem
             // 
             this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.levelToolStripMenuItem.Text = "Уровни";
             this.levelToolStripMenuItem.Click += new System.EventHandler(this.levelToolStripMenuItem_Click);
             // 
             // коэффМашинToolStripMenuItem
             // 
             this.коэффМашинToolStripMenuItem.Name = "коэффМашинToolStripMenuItem";
-            this.коэффМашинToolStripMenuItem.Size = new System.Drawing.Size(195, 26);
+            this.коэффМашинToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.коэффМашинToolStripMenuItem.Text = "Коэфф. Машин";
             this.коэффМашинToolStripMenuItem.Click += new System.EventHandler(this.коэффМашинToolStripMenuItem_Click);
+            // 
+            // начальныеЦеныToolStripMenuItem
+            // 
+            this.начальныеЦеныToolStripMenuItem.Name = "начальныеЦеныToolStripMenuItem";
+            this.начальныеЦеныToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.начальныеЦеныToolStripMenuItem.Text = "Начальные цены";
+            this.начальныеЦеныToolStripMenuItem.Click += new System.EventHandler(this.начальныеЦеныToolStripMenuItem_Click);
             // 
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aPIKeyToolStripMenuItem.Text = "Настройки";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
@@ -203,6 +212,7 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem коэффМашинToolStripMenuItem;
         private System.Windows.Forms.Label versions;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ToolStripMenuItem начальныеЦеныToolStripMenuItem;
     }
 }
 
