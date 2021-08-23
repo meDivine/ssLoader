@@ -59,7 +59,27 @@ namespace ssLoader.Arizona
             return (int)result;
         }
 
-        private static string MinifyLong(long value)
+        private async Task<bool> accFilterAsync(string project, int money, int price, int lvl)
+        {
+            using FileStream sets = File.OpenRead(@$"{getCurrDir}\Config\Servers\{project}.json");
+            var jsonConfig = await JsonSerializer.DeserializeAsync<ServerSets>(sets);
+            if (money >= jsonConfig.min_virts && price >= jsonConfig.min_price && lvl >= jsonConfig.min_lvl)
+                return true;
+            else
+                return false;
+        }
+
+        private async Task<bool> checkStatusSell(string project)
+        {
+            using FileStream sets = File.OpenRead(@$"{getCurrDir}\Config\Servers\{project}.json");
+            var jsonConfig = await JsonSerializer.DeserializeAsync<ServerSets>(sets);
+            if (jsonConfig.SellStatus)
+                return true;
+            else
+                return false;
+        }
+
+        private string MinifyLong(long value)
         {
             if (value >= 0 && value <= 1000)
                 return (value / 1D).ToString("0.#") + " вирт $";
@@ -92,6 +112,48 @@ namespace ssLoader.Arizona
                 return $"[ Авто: {str.Replace("\n", " ").Replace("(Владелец)", "").Replace("[Не припарковано]", "").Replace("\t", " ").Replace("загружается при входе", "").Replace("-", "").Replace("(Владелец[Не припарковано]", "")}]";
         }
 
+        private async Task createArizonaSell(string server, string path, string nick)
+        {
+            var getAccounts = new GetAccounts();
+            var accountSender = new AddAccount();
+            using FileStream api_key = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
+            var jsonConfig = await JsonSerializer.DeserializeAsync<Configurate>(api_key);
+
+            using FileStream openStream = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
+            var moneyPrice = await JsonSerializer.DeserializeAsync<Money>(openStream);
+
+            using FileStream levelPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Levels.json");
+            var levelPrice = await JsonSerializer.DeserializeAsync<Level>(levelPriceJson);
+
+            using FileStream MoneyStartJson = File.OpenRead(@$"{getCurrDir}\Config\StartPrice.json");
+            var MoneyStart = await JsonSerializer.DeserializeAsync<MoneyStart>(MoneyStartJson);
+
+            using FileStream carPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Cars\Coefficient.json");
+            var carPrice = await JsonSerializer.DeserializeAsync<Prices>(carPriceJson);
+            if (File.Exists($@"{path}\Arizona RP\{server}\goods\{nick}.json"))
+            {
+                Log.Logger = new LoggerConfiguration()
+                    .WriteTo.File($@"{getCurrDir}\logs\log-.txt", rollingInterval: RollingInterval.Hour).CreateLogger();
+                var text = File.ReadAllText($@"{path}\Arizona RP\{server}\goods\{nick}.json");
+                var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
+                int price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                int carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
+                int summMoney = price + carpr;
+                var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
+                if (resultat.Contains("Вы уже добавляли этот аккаунт"))
+                {
+                    Log.Error($"[ARZ - {server}] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
+                }
+                else if (resultat.Contains("OK"))
+                {
+                    string[] words = resultat.Split(new char[] { '|' });
+                    string idacc = words[1];
+                    Log.Information($"[ARZ - {server}] {result.nick} - выставлен на продажу за {summMoney} рублей | https://samp-store.ru/account/?id=" + idacc);
+                    successArizona++;
+                }
+            }
+        }
+
         public async Task SendToSS(string path)
         {
             try
@@ -114,7 +176,7 @@ namespace ssLoader.Arizona
                 using FileStream levelPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Levels.json");
                 var levelPrice = await JsonSerializer.DeserializeAsync<Level>(levelPriceJson);
 
-                using FileStream MoneyStartJson = File.OpenRead(@$"{getCurrDir}\Config\MoneyStart.json");
+                using FileStream MoneyStartJson = File.OpenRead(@$"{getCurrDir}\Config\StartPrice.json");
                 var MoneyStart = await JsonSerializer.DeserializeAsync<MoneyStart>(MoneyStartJson);
 
                 using FileStream carPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Cars\Coefficient.json");
@@ -123,6 +185,7 @@ namespace ssLoader.Arizona
                 int timing = jsonConfig.timing;
                 Log.Logger = new LoggerConfiguration()
                     .WriteTo.File($@"{getCurrDir}\logs\log-.txt", rollingInterval: RollingInterval.Hour).CreateLogger();
+                if (await checkStatusSell("ArizonaRP")) { 
                 #region ArizonaRP
                 // var arizonaFormat = new ArizonaFormat();
                 var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
@@ -592,7 +655,12 @@ namespace ssLoader.Arizona
                         Thread.Sleep(timing);
                     }
                 }
-                #endregion
+                    #endregion
+                }
+                else
+                {
+                    MessageBox.Show("а вот отключено");
+                }
                 #region AdvanceRP
                 var advanceBlueGoods = getAccounts.CheckNameAdvanceBlue(path);
                 if (advanceBlueGoods != null)

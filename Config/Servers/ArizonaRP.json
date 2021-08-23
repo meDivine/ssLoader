@@ -1,0 +1,7 @@
+{
+    "SellStatus": false,
+    "min_price": 1,
+    "min_virts": 100000,
+    "min_lvl": 2,
+    "mail_gaurd":  true
+}
