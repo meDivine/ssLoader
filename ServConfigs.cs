@@ -34,8 +34,8 @@ namespace ssLoader
             var jsonAmazing = await System.Text.Json.JsonSerializer.DeserializeAsync<ServerSets>(AmazingFile);
             AmazingcheckBox2.Checked = jsonAmazing.SellStatus;
             AmazingMinPrice.Text = jsonAmazing.min_price.ToString();
-            AmazingMinVirts.Text = jsonAmazing.min_virts.ToString();
-            AmazingMinLvl.Text = jsonAmazing.min_lvl.ToString();
+            AMZMinVirts.Text = jsonAmazing.min_virts.ToString();
+            AMZMinLVL.Text = jsonAmazing.min_lvl.ToString();
             AmazingMail.Checked = jsonAmazing.mail_guard;
             using FileStream AdvanceFile = File.OpenRead(@$"{getCurrDir}\Config\Servers\Advance RP.json");
             var jsonAdvance = await System.Text.Json.JsonSerializer.DeserializeAsync<ServerSets>(AdvanceFile);
@@ -115,8 +115,8 @@ namespace ssLoader
                 dynamic jsonObjAmazing = JsonConvert.DeserializeObject<ServerSets>(jsonAMZ);
                 jsonObjAmazing.SellStatus = AmazingcheckBox2.Checked;
                 jsonObjAmazing.min_price = int.Parse(AmazingMinPrice.Text);
-                jsonObjAmazing.min_virts = int.Parse(AmazingMinVirts.Text);
-                jsonObjAmazing.min_lvl = int.Parse(AmazingMinLvl.Text);
+                jsonObjAmazing.min_virts = int.Parse(AMZMinVirts.Text);
+                jsonObjAmazing.min_lvl = int.Parse(AMZMinLVL.Text);
                 jsonObjAmazing.mail_guard = AmazingMail.Checked;
                 using StreamWriter fileMAZ = File.CreateText(@$"{getCurrDir}\Config\Servers\Amazing RP.json");
                 JsonSerializer serializerAMZ = new JsonSerializer();
@@ -134,18 +134,96 @@ namespace ssLoader
                 JsonSerializer serializeARP = new JsonSerializer();
                 serializeARP.Serialize(fileARP, jsonObjAdvance);
                 #endregion
-                #region
-                string jsonDRP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Advance RP.json");
-                dynamic jsonObjDiamond = JsonConvert.DeserializeObject<ServerSets>(jsonARP);
-                jsonObjAdvance.SellStatus = AdvancecheckBox2.Checked;
-                jsonObjAdvance.min_price = int.Parse(AdvanceMinPrice.Text);
-                jsonObjAdvance.min_virts = int.Parse(AdvanceMinVirts.Text);
-                jsonObjAdvance.min_lvl = int.Parse(AdvanceMinLvl.Text);
-                jsonObjAdvance.mail_guard = AdvanceMail.Checked;
-                using StreamWriter fileDRP = File.CreateText(@$"{getCurrDir}\Config\Servers\Advance RP.json");
+                #region Diamond RP
+                string jsonDRP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Diamond RP.json");
+                dynamic jsonObjDiamond = JsonConvert.DeserializeObject<ServerSets>(jsonDRP);
+                jsonObjDiamond.SellStatus = DiamondCheckBox.Checked;
+                jsonObjDiamond.min_price = int.Parse(DiamondMinPrice.Text);
+                jsonObjDiamond.min_virts = int.Parse(DiamomdMinVirts.Text);
+                jsonObjDiamond.min_lvl = int.Parse(DiamondMinLVL.Text);
+                jsonObjDiamond.mail_guard = DiamondMail.Checked;
+                using StreamWriter fileDRP = File.CreateText(@$"{getCurrDir}\Config\Servers\Diamond RP.json");
                 JsonSerializer serializeDRP = new JsonSerializer();
-                serializeARP.Serialize(fileARP, jsonObjAdvance);
-                #region
+                serializeDRP.Serialize(fileDRP, jsonObjDiamond);
+                #endregion
+
+                #region Evolve RP
+                string jsonERP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Evolve RP.json");
+                dynamic jsonObjEvolve = JsonConvert.DeserializeObject<ServerSets>(jsonERP);
+                jsonObjEvolve.SellStatus = EvolveCheckBox.Checked;
+                jsonObjEvolve.min_price = int.Parse(EvolveTextBox.Text);
+                jsonObjEvolve.min_virts = int.Parse(EvolveVirts.Text);
+                jsonObjEvolve.min_lvl = int.Parse(EvolveLVL.Text);
+                jsonObjEvolve.mail_guard = EvolveMail.Checked;
+                using StreamWriter fileERP = File.CreateText(@$"{getCurrDir}\Config\Servers\Evolve RP.json");
+                JsonSerializer serializeERP = new JsonSerializer();
+                serializeERP.Serialize(fileERP, jsonObjEvolve);
+                #endregion
+
+                #region GTA RP
+                string jsonGRP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\GTA RP.json");
+                dynamic jsonObjGTARP = JsonConvert.DeserializeObject<ServerSets>(jsonGRP);
+                jsonObjGTARP.SellStatus = GTARPChechBox.Checked;
+                jsonObjGTARP.min_price = int.Parse(GTARPMinPrice.Text);
+                jsonObjGTARP.min_virts = int.Parse(GTARPMinVirts.Text);
+                jsonObjGTARP.min_lvl = int.Parse(GTARPMinLVL.Text);
+                jsonObjGTARP.mail_guard = GTARPMail.Checked;
+                using StreamWriter fileGRP = File.CreateText(@$"{getCurrDir}\Config\Servers\GTA RP.json");
+                JsonSerializer serializeGRP = new JsonSerializer();
+                serializeGRP.Serialize(fileGRP, jsonObjGTARP);
+                #endregion
+
+                #region Radmir RP
+                string jsonRRP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Radmir RP.json");
+                dynamic jsonObjRRP = JsonConvert.DeserializeObject<ServerSets>(jsonRRP);
+                jsonObjRRP.SellStatus = RadmirRPCheckBox.Checked;
+                jsonObjRRP.min_price = int.Parse(RadmirRPMinPrice.Text);
+                jsonObjRRP.min_virts = int.Parse(RadmirRPMinVirts.Text);
+                jsonObjRRP.min_lvl = int.Parse(RadmirRPMinLVL.Text);
+                jsonObjRRP.mail_guard = RadmirMail.Checked;
+                using StreamWriter fileRRP = File.CreateText(@$"{getCurrDir}\Config\Servers\Radmir RP.json");
+                JsonSerializer serializeRRP = new JsonSerializer();
+                serializeRRP.Serialize(fileRRP, jsonObjRRP);
+                #endregion
+
+                #region Rodina RP
+                string jsonRodina = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Rodina RP.json");
+                dynamic jsonObjRodina = JsonConvert.DeserializeObject<ServerSets>(jsonRodina);
+                jsonObjRodina.SellStatus = RodinaCheckBox.Checked;
+                jsonObjRodina.min_price = int.Parse(RodinaMinProce.Text);
+                jsonObjRodina.min_virts = int.Parse(RodinaMinVirts.Text);
+                jsonObjRodina.min_lvl = int.Parse(RodinaMinLVL.Text);
+                jsonObjRodina.mail_guard = RodinaMail.Checked;
+                using StreamWriter fileRodina = File.CreateText(@$"{getCurrDir}\Config\Servers\Rodina RP.json");
+                JsonSerializer serializeRodina = new JsonSerializer();
+                serializeRodina.Serialize(fileRodina, jsonObjRodina);
+                #endregion
+
+                #region Samp RP
+                string jsonSRP= File.ReadAllText(@$"{getCurrDir}\Config\Servers\Samp RP.json");
+                dynamic jsonObjSampRP = JsonConvert.DeserializeObject<ServerSets>(jsonSRP);
+                jsonObjSampRP.SellStatus = SRPCB.Checked;
+                jsonObjSampRP.min_price = int.Parse(SRPMinPrice.Text);
+                jsonObjSampRP.min_virts = int.Parse(SRPMinVirts.Text);
+                jsonObjSampRP.min_lvl = int.Parse(SRPMinLVL.Text);
+                jsonObjSampRP.mail_guard = SRPMail.Checked;
+                using StreamWriter fileSRP = File.CreateText(@$"{getCurrDir}\Config\Servers\Samp RP.json");
+                JsonSerializer serializeSRP = new JsonSerializer();
+                serializeSRP.Serialize(fileSRP, jsonObjSampRP);
+                #endregion
+
+                #region Samp RP
+                string jsonTRP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Trinity RP.json");
+                dynamic jsonObjTrinityRP = JsonConvert.DeserializeObject<ServerSets>(jsonSRP);
+                jsonObjTrinityRP.SellStatus = TrinityCB.Checked;
+                jsonObjTrinityRP.min_price = int.Parse(TrinityMinPrice.Text);
+                jsonObjTrinityRP.min_virts = int.Parse(TrinityMinVirts.Text);
+                jsonObjTrinityRP.min_lvl = int.Parse(TrinityMinLVL.Text);
+                jsonObjTrinityRP.mail_guard = TrinityMail.Checked;
+                using StreamWriter fileTRP = File.CreateText(@$"{getCurrDir}\Config\Servers\Trinity RP.json");
+                JsonSerializer serializeTRP = new JsonSerializer();
+                serializeTRP.Serialize(fileTRP, jsonObjTrinityRP);
+                #endregion
 
                 MessageBox.Show("Обновлено", "SS-LOADER");
             }

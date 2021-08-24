@@ -38,12 +38,12 @@ namespace ssLoader
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.коэффМашинToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начальныеЦеныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.конфигЗаливаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
             this.timeEnd = new System.Windows.Forms.Label();
             this.versions = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.конфигЗаливаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Author = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,41 +97,48 @@ namespace ssLoader
             this.коэффМашинToolStripMenuItem,
             this.начальныеЦеныToolStripMenuItem});
             this.priceToolStripMenuItem.Name = "priceToolStripMenuItem";
-            this.priceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.priceToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.priceToolStripMenuItem.Text = "Цены";
             // 
             // moneyToolStripMenuItem
             // 
             this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
-            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.moneyToolStripMenuItem.Text = "Валюта";
             this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
             // 
             // levelToolStripMenuItem
             // 
             this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.levelToolStripMenuItem.Text = "Уровни";
             this.levelToolStripMenuItem.Click += new System.EventHandler(this.levelToolStripMenuItem_Click);
             // 
             // коэффМашинToolStripMenuItem
             // 
             this.коэффМашинToolStripMenuItem.Name = "коэффМашинToolStripMenuItem";
-            this.коэффМашинToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.коэффМашинToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.коэффМашинToolStripMenuItem.Text = "Коэфф. Машин";
             this.коэффМашинToolStripMenuItem.Click += new System.EventHandler(this.коэффМашинToolStripMenuItem_Click);
             // 
             // начальныеЦеныToolStripMenuItem
             // 
             this.начальныеЦеныToolStripMenuItem.Name = "начальныеЦеныToolStripMenuItem";
-            this.начальныеЦеныToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.начальныеЦеныToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.начальныеЦеныToolStripMenuItem.Text = "Начальные цены";
             this.начальныеЦеныToolStripMenuItem.Click += new System.EventHandler(this.начальныеЦеныToolStripMenuItem_Click);
+            // 
+            // конфигЗаливаToolStripMenuItem
+            // 
+            this.конфигЗаливаToolStripMenuItem.Name = "конфигЗаливаToolStripMenuItem";
+            this.конфигЗаливаToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            this.конфигЗаливаToolStripMenuItem.Text = "Конфиг Залива";
+            this.конфигЗаливаToolStripMenuItem.Click += new System.EventHandler(this.конфигЗаливаToolStripMenuItem_Click);
             // 
             // aPIKeyToolStripMenuItem
             // 
             this.aPIKeyToolStripMenuItem.Name = "aPIKeyToolStripMenuItem";
-            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPIKeyToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.aPIKeyToolStripMenuItem.Text = "Настройки";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
@@ -162,32 +169,23 @@ namespace ssLoader
             this.versions.Name = "versions";
             this.versions.Size = new System.Drawing.Size(39, 20);
             this.versions.TabIndex = 5;
-            this.versions.Text = "v 1.0";
+            this.versions.Text = "v 1.1";
             // 
-            // linkLabel1
+            // Author
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(12, 153);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(126, 20);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Telegram channel";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // конфигЗаливаToolStripMenuItem
-            // 
-            this.конфигЗаливаToolStripMenuItem.Name = "конфигЗаливаToolStripMenuItem";
-            this.конфигЗаливаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.конфигЗаливаToolStripMenuItem.Text = "Конфиг Залива";
-            this.конфигЗаливаToolStripMenuItem.Click += new System.EventHandler(this.конфигЗаливаToolStripMenuItem_Click);
+            this.Author.AutoSize = true;
+            this.Author.Location = new System.Drawing.Point(12, 153);
+            this.Author.Name = "Author";
+            this.Author.Size = new System.Drawing.Size(121, 20);
+            this.Author.TabIndex = 7;
+            this.Author.Text = "Author: @iDivine";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 182);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.Author);
             this.Controls.Add(this.versions);
             this.Controls.Add(this.timeEnd);
             this.Controls.Add(this.startButton);
@@ -220,9 +218,9 @@ namespace ssLoader
         private System.Windows.Forms.Label timeEnd;
         private System.Windows.Forms.ToolStripMenuItem коэффМашинToolStripMenuItem;
         private System.Windows.Forms.Label versions;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ToolStripMenuItem начальныеЦеныToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem конфигЗаливаToolStripMenuItem;
+        private System.Windows.Forms.Label Author;
     }
 }
 

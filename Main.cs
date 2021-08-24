@@ -15,6 +15,7 @@ namespace ssLoader
 
         }
 
+
         static FolderBrowserDialog folderPath = new FolderBrowserDialog();
 
         private void folderBrowse_Click(object sender, EventArgs e)

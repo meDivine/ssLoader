@@ -41,9 +41,9 @@ namespace ssLoader
             this.AmazingGroupBox = new System.Windows.Forms.GroupBox();
             this.AmazingMail = new System.Windows.Forms.CheckBox();
             this.AmazingMinLvl = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.AMZMinLVL = new System.Windows.Forms.TextBox();
             this.AmazingMinVirts = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.AMZMinVirts = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.AmazingMinPrice = new System.Windows.Forms.TextBox();
             this.AmazingcheckBox2 = new System.Windows.Forms.CheckBox();
@@ -221,9 +221,9 @@ namespace ssLoader
             // 
             this.AmazingGroupBox.Controls.Add(this.AmazingMail);
             this.AmazingGroupBox.Controls.Add(this.AmazingMinLvl);
-            this.AmazingGroupBox.Controls.Add(this.textBox2);
+            this.AmazingGroupBox.Controls.Add(this.AMZMinLVL);
             this.AmazingGroupBox.Controls.Add(this.AmazingMinVirts);
-            this.AmazingGroupBox.Controls.Add(this.textBox3);
+            this.AmazingGroupBox.Controls.Add(this.AMZMinVirts);
             this.AmazingGroupBox.Controls.Add(this.label3);
             this.AmazingGroupBox.Controls.Add(this.AmazingMinPrice);
             this.AmazingGroupBox.Controls.Add(this.AmazingcheckBox2);
@@ -253,12 +253,12 @@ namespace ssLoader
             this.AmazingMinLvl.TabIndex = 8;
             this.AmazingMinLvl.Text = "Минимальный уровень";
             // 
-            // textBox2
+            // AMZMinLVL
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 121);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(101, 27);
-            this.textBox2.TabIndex = 7;
+            this.AMZMinLVL.Location = new System.Drawing.Point(6, 121);
+            this.AMZMinLVL.Name = "AMZMinLVL";
+            this.AMZMinLVL.Size = new System.Drawing.Size(101, 27);
+            this.AMZMinLVL.TabIndex = 7;
             // 
             // AmazingMinVirts
             // 
@@ -269,12 +269,12 @@ namespace ssLoader
             this.AmazingMinVirts.TabIndex = 6;
             this.AmazingMinVirts.Text = "Минимум виртов";
             // 
-            // textBox3
+            // AMZMinVirts
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 88);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(101, 27);
-            this.textBox3.TabIndex = 5;
+            this.AMZMinVirts.Location = new System.Drawing.Point(6, 88);
+            this.AMZMinVirts.Name = "AMZMinVirts";
+            this.AMZMinVirts.Size = new System.Drawing.Size(101, 27);
+            this.AMZMinVirts.TabIndex = 5;
             // 
             // label3
             // 
@@ -1048,8 +1048,7 @@ namespace ssLoader
         private System.Windows.Forms.CheckBox ArzCheckBoxMail;
         private System.Windows.Forms.GroupBox AmazingGroupBox;
         private System.Windows.Forms.CheckBox AmazingMail;
-        private System.Windows.Forms.Label AmazingMinLvl;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox AMZMinLVL;
         private System.Windows.Forms.Label AmazingMinVirts;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
@@ -1128,5 +1127,7 @@ namespace ssLoader
         private System.Windows.Forms.TextBox TrinityMinPrice;
         private System.Windows.Forms.CheckBox TrinityCB;
         private System.Windows.Forms.Button UpdateBTN;
+        private System.Windows.Forms.Label AmazingMinLvl;
+        private System.Windows.Forms.TextBox AMZMinVirts;
     }
 }
