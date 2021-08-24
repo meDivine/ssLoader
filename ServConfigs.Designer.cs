@@ -990,6 +990,7 @@ namespace ssLoader
             this.UpdateBTN.TabIndex = 19;
             this.UpdateBTN.Text = "Обновить";
             this.UpdateBTN.UseVisualStyleBackColor = true;
+            this.UpdateBTN.Click += new System.EventHandler(this.UpdateBTN_Click);
             // 
             // ServConfigs
             // 

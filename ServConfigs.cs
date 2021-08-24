@@ -98,17 +98,66 @@ namespace ssLoader
         {
             try
             {
+                #region Arizona RP
                 string jsonARZ = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Arizona RP.json");
                 dynamic jsonObj = JsonConvert.DeserializeObject<ServerSets>(jsonARZ);
-
+                jsonObj.SellStatus = ArizonaCheckBox.Checked;
+                jsonObj.min_price = int.Parse(ArizonaMinPrice.Text);
+                jsonObj.min_virts = int.Parse(ArizonaMinVirts.Text);
+                jsonObj.min_lvl = int.Parse(ArizonaMinLVL.Text);
+                jsonObj.mail_guard = ArzCheckBoxMail.Checked;
                 using StreamWriter file = File.CreateText(@$"{getCurrDir}\Config\Servers\Arizona RP.json");
-                Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, jsonObj);
+                #endregion
+                #region Amazing RP
+                string jsonAMZ = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Amazing RP.json");
+                dynamic jsonObjAmazing = JsonConvert.DeserializeObject<ServerSets>(jsonAMZ);
+                jsonObjAmazing.SellStatus = AmazingcheckBox2.Checked;
+                jsonObjAmazing.min_price = int.Parse(AmazingMinPrice.Text);
+                jsonObjAmazing.min_virts = int.Parse(AmazingMinVirts.Text);
+                jsonObjAmazing.min_lvl = int.Parse(AmazingMinLvl.Text);
+                jsonObjAmazing.mail_guard = AmazingMail.Checked;
+                using StreamWriter fileMAZ = File.CreateText(@$"{getCurrDir}\Config\Servers\Amazing RP.json");
+                JsonSerializer serializerAMZ = new JsonSerializer();
+                serializerAMZ.Serialize(fileMAZ, jsonObjAmazing);
+                #endregion
+                #region Advance Rp
+                string jsonARP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Advance RP.json");
+                dynamic jsonObjAdvance = JsonConvert.DeserializeObject<ServerSets>(jsonARP);
+                jsonObjAdvance.SellStatus = AdvancecheckBox2.Checked;
+                jsonObjAdvance.min_price = int.Parse(AdvanceMinPrice.Text);
+                jsonObjAdvance.min_virts = int.Parse(AdvanceMinVirts.Text);
+                jsonObjAdvance.min_lvl = int.Parse(AdvanceMinLvl.Text);
+                jsonObjAdvance.mail_guard = AdvanceMail.Checked;
+                using StreamWriter fileARP = File.CreateText(@$"{getCurrDir}\Config\Servers\Advance RP.json");
+                JsonSerializer serializeARP = new JsonSerializer();
+                serializeARP.Serialize(fileARP, jsonObjAdvance);
+                #endregion
+                #region
+                string jsonDRP = File.ReadAllText(@$"{getCurrDir}\Config\Servers\Advance RP.json");
+                dynamic jsonObjDiamond = JsonConvert.DeserializeObject<ServerSets>(jsonARP);
+                jsonObjAdvance.SellStatus = AdvancecheckBox2.Checked;
+                jsonObjAdvance.min_price = int.Parse(AdvanceMinPrice.Text);
+                jsonObjAdvance.min_virts = int.Parse(AdvanceMinVirts.Text);
+                jsonObjAdvance.min_lvl = int.Parse(AdvanceMinLvl.Text);
+                jsonObjAdvance.mail_guard = AdvanceMail.Checked;
+                using StreamWriter fileDRP = File.CreateText(@$"{getCurrDir}\Config\Servers\Advance RP.json");
+                JsonSerializer serializeDRP = new JsonSerializer();
+                serializeARP.Serialize(fileARP, jsonObjAdvance);
+                #region
+
+                MessageBox.Show("Обновлено", "SS-LOADER");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+        }
+
+        private void UpdateBTN_Click(object sender, EventArgs e)
+        {
+            OnReload();
         }
     }
 }
