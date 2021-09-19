@@ -2,5 +2,7 @@
   "api_key": "",
   "seller_message": "",
   "license": "",
-  "timing": 100
+  "timing": 500,
+  "proxy": false,
+  "title_message": ""
 }

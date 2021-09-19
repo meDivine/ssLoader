@@ -40,6 +40,10 @@ namespace ssLoader
             this.sellermsg = new System.Windows.Forms.TextBox();
             this.timingText = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.proxyCheckBox = new System.Windows.Forms.CheckBox();
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // refreshTextBox
@@ -52,7 +56,7 @@ namespace ssLoader
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(13, 202);
+            this.refreshbutton.Location = new System.Drawing.Point(13, 337);
             this.refreshbutton.Name = "refreshbutton";
             this.refreshbutton.Size = new System.Drawing.Size(102, 29);
             this.refreshbutton.TabIndex = 1;
@@ -105,7 +109,7 @@ namespace ssLoader
             // timingText
             // 
             this.timingText.AutoSize = true;
-            this.timingText.Location = new System.Drawing.Point(13, 138);
+            this.timingText.Location = new System.Drawing.Point(11, 251);
             this.timingText.Name = "timingText";
             this.timingText.Size = new System.Drawing.Size(76, 20);
             this.timingText.TabIndex = 5;
@@ -113,17 +117,59 @@ namespace ssLoader
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 161);
+            this.textBox1.Location = new System.Drawing.Point(13, 274);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(76, 27);
             this.textBox1.TabIndex = 6;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // proxyCheckBox
+            // 
+            this.proxyCheckBox.AutoSize = true;
+            this.proxyCheckBox.Location = new System.Drawing.Point(13, 307);
+            this.proxyCheckBox.Name = "proxyCheckBox";
+            this.proxyCheckBox.Size = new System.Drawing.Size(183, 24);
+            this.proxyCheckBox.TabIndex = 7;
+            this.proxyCheckBox.Text = "Использовать прокси";
+            this.proxyCheckBox.UseVisualStyleBackColor = true;
+            this.proxyCheckBox.CheckedChanged += new System.EventHandler(this.proxyCheckBox_CheckedChanged);
+            // 
+            // textBoxTitle
+            // 
+            this.textBoxTitle.Location = new System.Drawing.Point(13, 161);
+            this.textBoxTitle.Name = "textBoxTitle";
+            this.textBoxTitle.Size = new System.Drawing.Size(365, 27);
+            this.textBoxTitle.TabIndex = 9;
+            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Location = new System.Drawing.Point(12, 138);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(143, 20);
+            this.titleLabel.TabIndex = 8;
+            this.titleLabel.Text = "Описание аккаунта";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 191);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(452, 60);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Пример: Уровень %level% | Денег: %money% | Машины: %cars%\r\n%money% = 123к\r\n%money" +
+    "2% = 123000\r\n";
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 259);
+            this.ClientSize = new System.Drawing.Size(466, 388);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxTitle);
+            this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.proxyCheckBox);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.timingText);
             this.Controls.Add(this.sellermsg);
@@ -133,7 +179,7 @@ namespace ssLoader
             this.Controls.Add(this.refreshTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Config";
-            this.Text = "SS-LOADER | API-Ключ samp-store";
+            this.Text = "SS-LOADER |  Настройки";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +198,9 @@ namespace ssLoader
         private System.Windows.Forms.TextBox sellermsg;
         private System.Windows.Forms.Label timingText;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox proxyCheckBox;
+        private System.Windows.Forms.TextBox textBoxTitle;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -732,7 +732,7 @@ namespace ssLoader.Arizona
             var accs = new List<string>();
             if (!File.Exists($@"{path}\Rodina RP\Южный Округ\goods\ALL_GOODS.txt")) return null;
             var file =
-                new System.IO.StreamReader($@"{path}\Южный RP\Центральный Округ\goods\ALL_GOODS.txt");
+                new System.IO.StreamReader($@"{path}\Rodina RP\Южный Округ\goods\ALL_GOODS.txt");
             while ((line = file.ReadLine()) != null)
             {
                 var output = line.Substring(0, line.IndexOf(':'));

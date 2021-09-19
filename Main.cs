@@ -82,7 +82,7 @@ namespace ssLoader
 
         private void Main_Load(object sender, EventArgs e)
         {
-           // timeEnd.Text = "Окончание: " + UnixTimeToDateTime(long.Parse(Start.KeyAuthApp.user_data.subscriptions[0].expiry));
+         timeEnd.Text = "Окончание: " + UnixTimeToDateTime(long.Parse(Start.KeyAuthApp.user_data.subscriptions[0].expiry));
         }
         public DateTime UnixTimeToDateTime(long unixtime)
         {
@@ -112,6 +112,17 @@ namespace ssLoader
         {
             Form ServConfigs = new ServConfigs();
             ServConfigs.Show(); 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void проксиЧекерToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form ProxyCheckerStart = new ProxyChecker();
+            ProxyCheckerStart.Show();
         }
     }
 }

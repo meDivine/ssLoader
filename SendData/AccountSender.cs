@@ -2,6 +2,7 @@
 using ssLoader.Json;
 using ssLoader.Json.CarPrice;
 using ssLoader.SampStoreAPI;
+using ssLoader.SendData;
 using System;
 using System.IO;
 using System.Text;
@@ -14,16 +15,16 @@ namespace ssLoader.Arizona
     public class AccountSender
     {
         private string getCurrDir = Directory.GetCurrentDirectory();
-        int successArizona = 0;
-        int successAdvance = 0;
-        int successSRP = 0;
-        int successRadmir = 0;
-        int successDiamond = 0;
-        int successEvolve = 0;
-        int successRodina = 0;
-        int successTrinity = 0;
-        int successGTARP = 0;
-        int successAmazing = 0;
+        private int successArizona = 0;
+        private int successAdvance = 0;
+        private int successSRP = 0;
+        private int successRadmir = 0;
+        private int successDiamond = 0;
+        private int successEvolve = 0;
+        private int successRodina = 0;
+        private int successTrinity = 0;
+        private int successGTARP = 0;
+        private int successAmazing = 0;
         private int arizonasmoney = 0;
         private int amazingsmoney = 0;
         private int evolvesmoney = 0;
@@ -47,116 +48,26 @@ namespace ssLoader.Arizona
        
         private async Task LogError()
         {
-            var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            var timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
             Log.Logger = new LoggerConfiguration()
-                   .WriteTo.File($@"{getCurrDir}\logs\log-{CreateMD5(Timestamp.ToString())}.txt", rollingInterval: RollingInterval.Infinite).CreateLogger();
+                   .WriteTo.File($@"{getCurrDir}\logs\log-{CreateMD5(timestamp.ToString())}.txt", rollingInterval: RollingInterval.Infinite).CreateLogger();
         }
         private static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            using System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+            // Convert the byte array to hexadecimal string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hashBytes.Length; i++)
             {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-                // Convert the byte array to hexadecimal string
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
-                return sb.ToString();
+                sb.Append(hashBytes[i].ToString("X2"));
             }
+            return sb.ToString();
         }
-        private int CountPrice(float money, int lvl, int MoneyStart, int typeMoney, int typeLevel)
-        {
-            var moneyCount = (money / 1000000.0) * typeMoney;
-            var levelCount = lvl * typeLevel;
-            int result = MoneyStart + levelCount + (int)moneyCount;
-            return result;
-        }
-
-        private int CarPrice(string input, string type, int typeMoney, double coefficient)
-        {
-            string line;
-            if (input == null) return 0;
-            double carp = 0;
-            var file = new StreamReader($@"{getCurrDir}\Config\Cars\{type}.txt");
-            double result = 0;
-            while ((line = file.ReadLine()) != null)
-            {
-                string[] words = line.Split(new char[] { ':' });
-                string carname = words[0];
-                string carprice = words[1];
-                if (input.Contains(carname))
-                {
-                    carp += float.Parse(carprice);
-                    result = ((carp / 1000000.0) * coefficient) * typeMoney;
-                }
-            }
-            return (int)result;
-        }
-
-        private async Task<bool> accFilterAsync(string project, int money, int price, int lvl)
-        {
-            using FileStream sets = File.OpenRead(@$"{getCurrDir}\Config\Servers\{project}.json");
-            var jsonConfig = await JsonSerializer.DeserializeAsync<ServerSets>(sets);
-            if (money >= jsonConfig.min_virts && price >= jsonConfig.min_price && lvl >= jsonConfig.min_lvl)
-                return true;
-            else
-                return false;
-        }
-
-        private async Task<bool> checkStatusSell(string project)
-        {
-            using FileStream sets = File.OpenRead(@$"{getCurrDir}\Config\Servers\{project}.json");
-            var jsonConfig = await JsonSerializer.DeserializeAsync<ServerSets>(sets);
-            if (jsonConfig.SellStatus)
-                return true;
-            else
-                return false;
-        }
-
-        private async Task<bool> checkStatusMail(string project, string mail)
-        {
-            using FileStream sets = File.OpenRead(@$"{getCurrDir}\Config\Servers\{project}.json");
-            var jsonConfig = await JsonSerializer.DeserializeAsync<ServerSets>(sets);
-            if (mail.Contains("Привязана") && jsonConfig.mail_guard == false)
-                return false;
-            else 
-                return true;
-        }
-
-        private string MinifyLong(long value)
-        {
-            if (value >= 0 && value <= 1000)
-                return (value / 1D).ToString("0.#") + " вирт $";
-            if (value >= 1000 && value <= 10000)
-                return (value / 1000D).ToString("#.0") + " тыс. $";
-            if (value >= 10000 && value <= 100000)
-                return (value / 1000D).ToString("#.0") + " тыс. $";
-            if (value >= 100000 && value <= 1000000)
-                return (value / 1000D).ToString("#.0") + " тыс. $";
-            if (value >= 1000000 && value <= 10000000)
-                return (value / 1000000D).ToString("#.0") + " млн. $";
-            if (value >= 10000000 && value <= 100000000)
-                return (value / 1000000D).ToString("#.0") + " млн. $";
-            if (value >= 100000000 && value <= 1000000000)
-                return (value / 1000000D).ToString("#.0") + " млн. $";
-            if (value >= 1000000000 && value <= 10000000000)
-                return (value / 10000000D).ToString("#.0") + " млн. $";
-            return value.ToString("#.0");
-        }
-
-        private string carsInfiTitle(string str)
-        {
-            if (str == "Нет" || str == "нет" || str == null || str == "Не удалось определить")
-                return "";
-            else
-                return $"[ Авто: {str.Replace("\n", " ").Replace("(Владелец)", "").Replace("[Не припарковано]", "").Replace("\t", " ").Replace("загружается при входе", "").Replace("-", "").Replace("(Владелец[Не припарковано]", "")}]";
-        }
-
-        private async Task addStat(string Project, int money, int virts)
+        private async Task AddStat(string Project, int money, int virts)
         {
             switch (Project)
             {
@@ -219,98 +130,94 @@ namespace ssLoader.Arizona
         {
             var getAccounts = new GetAccounts();
             var accountSender = new AddAccount();
-            using FileStream api_key = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
+            var descGenerator = new GenerateDescription();
+            await using FileStream api_key = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
             var jsonConfig = await JsonSerializer.DeserializeAsync<Configurate>(api_key);
 
-            using FileStream openStream = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
+            await using FileStream openStream = File.OpenRead(@$"{getCurrDir}\Config\Money.json");
             var moneyPrice = await JsonSerializer.DeserializeAsync<Money>(openStream);
 
-            using FileStream levelPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Levels.json");
+            await using FileStream levelPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Levels.json");
             var levelPrice = await JsonSerializer.DeserializeAsync<Level>(levelPriceJson);
 
-            using FileStream MoneyStartJson = File.OpenRead(@$"{getCurrDir}\Config\StartPrice.json");
+            await using FileStream MoneyStartJson = File.OpenRead(@$"{getCurrDir}\Config\StartPrice.json");
             var MoneyStart = await JsonSerializer.DeserializeAsync<MoneyStart>(MoneyStartJson);
 
-            using FileStream carPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Cars\Coefficient.json");
+            await using FileStream carPriceJson = File.OpenRead(@$"{getCurrDir}\Config\Cars\Coefficient.json");
             var carPrice = await JsonSerializer.DeserializeAsync<Prices>(carPriceJson);
 
             if (File.Exists($@"{path}\{Project}\{server}\goods\{nick}.json"))
             {
                
-                var text = File.ReadAllText($@"{path}\{Project}\{server}\goods\{nick}.json");
+                var text = await File.ReadAllTextAsync($@"{path}\{Project}\{server}\goods\{nick}.json");
                 var result = JsonSerializer.Deserialize<AccountFormat>(text.Replace("\r\n", ""));
                 int price = 0;
                 int carpr = 0;
                 int summMoney = 0;
-                if (Project == "Arizona RP")
+                
+                switch (Project)
                 {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
-                    carpr = CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
-                    summMoney = price + carpr;
+                    case "Arizona RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.ArizonaRP, moneyPrice.ArizonaRP, levelPrice.ArizonaRP);
+                        carpr = descGenerator.CarPrice(result.cars, "ARZ", moneyPrice.ArizonaRP, carPrice.ArizonaRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Amazing RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Advance RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Diamond RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Evolve RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "GTA RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
+                        carpr = descGenerator.CarPrice(result.cars, "GTARP", moneyPrice.GTARP, carPrice.GTARP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Radmir RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Rodina RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Trinity RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
+                        carpr = descGenerator.CarPrice(result.cars, "Trinity", moneyPrice.TrinityRP, carPrice.TrinityRP);
+                        summMoney = price + carpr;
+                        break;
+                    case "Samp RP":
+                        price = descGenerator.CountPrice(result.money, result.lvl, MoneyStart.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
+                        summMoney = price;
+                        break;
                 }
 
-                if (Project == "Amazing RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.AmazingRP, moneyPrice.AmazingRP, levelPrice.AmazingRP);
-                    carpr = CarPrice(result.cars, "Amazing", moneyPrice.AmazingRP, carPrice.AmazingRP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "Advance RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.AdvanceRP, moneyPrice.AdvanceRP, levelPrice.AdvanceRP);
-                    carpr = CarPrice(result.cars, "Advance", moneyPrice.AdvanceRP, carPrice.AdvanceRP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "Diamond RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.DiamondRP, moneyPrice.DiamondRP, levelPrice.DiamondRP);
-                    carpr = CarPrice(result.cars, "Diamond", moneyPrice.DiamondRP, carPrice.DiamondRP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "Evolve RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.EvolveRP, moneyPrice.EvolveRP, levelPrice.EvolveRP);
-                    carpr = CarPrice(result.cars, "Evolve", moneyPrice.EvolveRP, carPrice.EvolveRP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "GTA RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.GTARP, moneyPrice.GTARP, levelPrice.GTARP);
-                    carpr = CarPrice(result.cars, "GTARP", moneyPrice.GTARP, carPrice.GTARP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "Radmir RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.RadmirRP, moneyPrice.RadmirRP, levelPrice.RadmirRP);
-                    carpr = CarPrice(result.cars, "Radmir", moneyPrice.RadmirRP, carPrice.RadmirRP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "Rodina RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.RodinaRP, moneyPrice.RodinaRP, levelPrice.RodinaRP);
-                    carpr = CarPrice(result.cars, "Rodina", moneyPrice.RodinaRP, carPrice.RodinaRP);
-                    summMoney = price + carpr;
-                }
-                if (Project == "Trinity RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.TrinityRP, moneyPrice.TrinityRP, levelPrice.TrinityRP);
-                    carpr = CarPrice(result.cars, "Trinity", moneyPrice.TrinityRP, carPrice.TrinityRP);
-                    summMoney = price + carpr;
 
-                }
-                if (Project == "Samp RP")
-                {
-                    price = CountPrice(result.money, result.lvl, MoneyStart.SampRP, moneyPrice.SampRP, levelPrice.SampRP);
-                    summMoney = price;
 
-                }
-
-                if (await accFilterAsync(Project, result.money, summMoney, result.lvl))
+                if (await descGenerator.accFilterAsync(Project, result.money, summMoney, result.lvl))
                 {
-                    if (await checkStatusMail(Project, result.mail))
+                    if (await descGenerator.checkStatusMail(Project, result.mail))
                     {
+                        string title = await descGenerator.GenerateTitleAsync(result.lvl, result.money, result.cars);
                         // MessageBox.Show($"{Project} | Сервер {server} Ник {result.nick} Цена: {summMoney} денег: {MinifyLong(result.money)} уровень {result.lvl}");
-                        var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, $"✔️ {result.lvl} уровень ✔️ {MinifyLong(result.money)} на руках ✔️ {carsInfiTitle(result.cars)}"));
+                        var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, title));
+                        MessageBox.Show(title);
                         if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                         {
                             Log.Error($"[{Project} - {server}] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
@@ -320,7 +227,11 @@ namespace ssLoader.Arizona
                             string[] words = resultat.Split(new char[] { '|' });
                             string idacc = words[1];
                             Log.Information($"[{Project} - {server}] {result.nick} - выставлен на продажу за {summMoney} рублей | https://samp-store.ru/account/?id=" + idacc);
-                            await addStat(Project, summMoney, result.money);
+                            await AddStat(Project, summMoney, result.money);
+                        }
+                        else if (resultat.Contains("You are being rate limited"))
+                        {
+                            MessageBox.Show("Бан от cloudflare за большое кол-во запросов", "Бан от cloudflare");
                         }
                     }
                 }
@@ -336,8 +247,9 @@ namespace ssLoader.Arizona
                 await LogError();
                 var getAccounts = new GetAccounts();
                 var accountSender = new AddAccount();
+                var descGenerator = new GenerateDescription();
                 #region ArizonaRP
-                if (await checkStatusSell("Arizona RP"))
+                if (await descGenerator.checkStatusSell("Arizona RP"))
                 {
 
                     var brainburgGoods = getAccounts.CheckNameArizonaBrainburg(path);
@@ -479,7 +391,7 @@ namespace ssLoader.Arizona
                 }
                 #endregion
                 #region Advance RP
-                if (await checkStatusSell("Advance RP"))
+                if (await descGenerator.checkStatusSell("Advance RP"))
                 {
                     var advanceBlueGoods = getAccounts.CheckNameAdvanceBlue(path);
                     var advanceRedRed = getAccounts.CheckNameAdvanceRed(path);
@@ -516,7 +428,7 @@ namespace ssLoader.Arizona
                 }
                 #endregion
                 #region Samp Rp
-                if (await checkStatusSell("Samp RP"))
+                if (await descGenerator.checkStatusSell("Samp RP"))
                 {
                     var srpRevo = getAccounts.CheckNameSrpRevolution(path);
                     var srp02 = getAccounts.CheckNameSrpZerotwo(path);
@@ -553,7 +465,7 @@ namespace ssLoader.Arizona
                 }
                 #endregion
                 #region Radmir RP
-                if (await checkStatusSell("Radmir RP"))
+                if (await descGenerator.checkStatusSell("Radmir RP"))
                 {
                     var radmir1 = getAccounts.CheckNameRadmir1(path);
                     var radmir2 = getAccounts.CheckNameRadmir2(path);
@@ -662,7 +574,7 @@ namespace ssLoader.Arizona
                 }
                 #endregion
                 #region Diamond RP
-                if (await checkStatusSell("Diamond RP"))
+                if (await descGenerator.checkStatusSell("Diamond RP"))
                 {
                     var diamondEmerald = getAccounts.CheckNameDiamondEmerald(path);
                     var diamondTrilliant = getAccounts.CheckNameDiamondTrilliant(path);
@@ -693,7 +605,7 @@ namespace ssLoader.Arizona
 
                 #endregion
                 #region Evolve RP
-                if (await checkStatusSell("Evolve RP"))
+                if (await descGenerator.checkStatusSell("Evolve RP"))
                 {
                     var Evolve01 = getAccounts.CheckNameEvolve1(path);
                     var Evolve02 = getAccounts.CheckNameEvolve2(path);
@@ -723,7 +635,7 @@ namespace ssLoader.Arizona
 
                 #endregion
                 #region RodinaRP
-                if (await checkStatusSell("Rodina RP"))
+                if (await descGenerator.checkStatusSell("Rodina RP"))
                 {
                     var RodinaVO = getAccounts.CheckNameRodinaVO(path);
                     var RodinaSO = getAccounts.CheckNameRodinaSO(path);
@@ -760,7 +672,7 @@ namespace ssLoader.Arizona
                 }
                 #endregion
                 #region Trinity RP
-                if (await checkStatusSell("Trinity RP"))
+                if (await descGenerator.checkStatusSell("Trinity RP"))
                 {
                     var trinity1 = getAccounts.CheckNameTrinity1(path);
                     var trinity2 = getAccounts.CheckNameTrinity2(path);
@@ -782,7 +694,7 @@ namespace ssLoader.Arizona
 
                 #endregion
                 #region GTA RP
-                if (await checkStatusSell("GTA RP"))
+                if (await descGenerator.checkStatusSell("GTA RP"))
                 {
                     var gtarp1 = getAccounts.CheckNameGTARP1(path);
                     var gtarp2 = getAccounts.CheckNameGTARP2(path);
@@ -803,7 +715,7 @@ namespace ssLoader.Arizona
                 }
                 #endregion
                 #region Amazing RP
-                if (await checkStatusSell("Amazing RP"))
+                if (await descGenerator.checkStatusSell("Amazing RP"))
                 {
                     var amazingred = getAccounts.CheckNameAmazingRed(path);
                     var amazingyellow = getAccounts.CheckNameAmazingYellow(path);
@@ -854,20 +766,21 @@ namespace ssLoader.Arizona
             }
             finally
             {
-                int allaccs = successArizona + successAdvance + successAmazing + successDiamond + successEvolve + successGTARP + successRadmir + successRodina + successSRP + successTrinity;
-                int sumrub = varizonasmoney + vadvancemoney + vamazingsmoney + vdiamondsmoney + vevolvesmoney + vgtarpsmoney + vradmirmoney + vrodinamoney + vsamprpsmoney + vtrinitysmoney; 
-                MessageBox.Show($"Залито: \nArizona RP {successArizona} | Вирты: {MinifyLong(arizonasmoney)} | Кэш {varizonasmoney} р." +
-                    $"\nAdvance RP {successAdvance} | Вирты: {MinifyLong(advancemoney)} | Кэш {vadvancemoney} р.\n" +
-                    $"Samp-RP {successSRP} | Вирты: {MinifyLong(samprpsmoney)} | Кэш {vsamprpsmoney} р.\n" +
-                    $"Radmir-RP {successRadmir} | Вирты: {MinifyLong(radmirmoney)} | Кэш {vradmirmoney} р.\n" +
-                    $"Diamond-RP {successDiamond} | Вирты: {MinifyLong(diamondsmoney)} | Кэш {vdiamondsmoney} р.\n" +
-                    $"Evolve-RP {successEvolve} | Вирты: {MinifyLong(evolvesmoney)} | Кэш {vevolvesmoney} р.\n" +
-                    $"Rodina-RP {successRodina} | Вирты: {MinifyLong(rodinamoney)} | Кэш {vrodinamoney} р.\n" +
-                    $"Trinity-RP {successTrinity} | Вирты: {MinifyLong(trinitysmoney)} | Кэш {vtrinitysmoney} р.\n" +
-                    $"GTA-RP {successGTARP} | Вирты: {MinifyLong(gtarpsmoney)} | Кэш {vgtarpsmoney} р.\n" +
-                    $"Amazing-RP {successAmazing} | Вирты: {MinifyLong(amazingsmoney)} | Кэш {vamazingsmoney} р.\n" +
+                var descGenerator = new GenerateDescription(); // оч хуево делаю торопят обнову выпустить вот и говнокожу
+                var allaccs = successArizona + successAdvance + successAmazing + successDiamond + successEvolve + successGTARP + successRadmir + successRodina + successSRP + successTrinity;
+                var sumrub = varizonasmoney + vadvancemoney + vamazingsmoney + vdiamondsmoney + vevolvesmoney + vgtarpsmoney + vradmirmoney + vrodinamoney + vsamprpsmoney + vtrinitysmoney; 
+                MessageBox.Show($"Залито: \nArizona RP {successArizona} | Вирты: {descGenerator.MinifyLong(arizonasmoney)} | Кэш {varizonasmoney} р." +
+                    $"\nAdvance RP {successAdvance} | Вирты: {descGenerator.MinifyLong(advancemoney)} | Кэш {vadvancemoney} р.\n" +
+                    $"Samp-RP {successSRP} | Вирты: {descGenerator.MinifyLong(samprpsmoney)} | Кэш {vsamprpsmoney} р.\n" +
+                    $"Radmir-RP {successRadmir} | Вирты: {descGenerator.MinifyLong(radmirmoney)} | Кэш {vradmirmoney} р.\n" +
+                    $"Diamond-RP {successDiamond} | Вирты: {descGenerator.MinifyLong(diamondsmoney)} | Кэш {vdiamondsmoney} р.\n" +
+                    $"Evolve-RP {successEvolve} | Вирты: {descGenerator.MinifyLong(evolvesmoney)} | Кэш {vevolvesmoney} р.\n" +
+                    $"Rodina-RP {successRodina} | Вирты: {descGenerator.MinifyLong(rodinamoney)} | Кэш {vrodinamoney} р.\n" +
+                    $"Trinity-RP {successTrinity} | Вирты: {descGenerator.MinifyLong(trinitysmoney)} | Кэш {vtrinitysmoney} р.\n" +
+                    $"GTA-RP {successGTARP} | Вирты: {descGenerator.MinifyLong(gtarpsmoney)} | Кэш {vgtarpsmoney} р.\n" +
+                    $"Amazing-RP {successAmazing} | Вирты: {descGenerator.MinifyLong(amazingsmoney)} | Кэш {vamazingsmoney} р.\n" +
                     $"Всего - {allaccs} аккаунтов\n" +
-                    $"Кэш: {sumrub} рублей", "Обработка завершена", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
+                    $"Кэш: {sumrub} р.", "Обработка завершена", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
             }
         }
     }

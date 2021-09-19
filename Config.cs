@@ -18,11 +18,13 @@ namespace ssLoader
 
         private async void OnStart()
         {
-            using FileStream moneyFile = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
-            var jsonText = await System.Text.Json.JsonSerializer.DeserializeAsync<Configurate>(moneyFile);
+            using FileStream cfg = File.OpenRead(@$"{getCurrDir}\Config\Config.json");
+            var jsonText = await System.Text.Json.JsonSerializer.DeserializeAsync<Configurate>(cfg);
             refreshTextBox.Text = jsonText.api_key;
             sellermsg.Text = jsonText.seller_message;
             textBox1.Text = jsonText.timing.ToString();
+            textBoxTitle.Text = jsonText.title_message.ToString();
+            proxyCheckBox.Checked = jsonText.proxy;
         }
 
         private void OnReload()
@@ -34,6 +36,8 @@ namespace ssLoader
                 jsonObj.api_key = refreshTextBox.Text;
                 jsonObj.seller_message = sellermsg.Text;
                 jsonObj.timing = int.Parse(textBox1.Text);
+                jsonObj.title_message = textBoxTitle.Text;
+                jsonObj.proxy = proxyCheckBox.Checked;
                 using StreamWriter file = File.CreateText(@$"{getCurrDir}\Config\Config.json");
                 Newtonsoft.Json.JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, jsonObj);
@@ -57,6 +61,16 @@ namespace ssLoader
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proxyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }

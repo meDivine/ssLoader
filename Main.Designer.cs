@@ -40,10 +40,12 @@ namespace ssLoader
             this.начальныеЦеныToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.конфигЗаливаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проксиЧекерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startButton = new System.Windows.Forms.Button();
             this.timeEnd = new System.Windows.Forms.Label();
             this.versions = new System.Windows.Forms.Label();
             this.Author = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +73,8 @@ namespace ssLoader
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.проксиЧекерToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -142,12 +145,19 @@ namespace ssLoader
             this.aPIKeyToolStripMenuItem.Text = "Настройки";
             this.aPIKeyToolStripMenuItem.Click += new System.EventHandler(this.aPIKeyToolStripMenuItem_Click);
             // 
+            // проксиЧекерToolStripMenuItem
+            // 
+            this.проксиЧекерToolStripMenuItem.Name = "проксиЧекерToolStripMenuItem";
+            this.проксиЧекерToolStripMenuItem.Size = new System.Drawing.Size(119, 24);
+            this.проксиЧекерToolStripMenuItem.Text = "Прокси чекер";
+            this.проксиЧекерToolStripMenuItem.Click += new System.EventHandler(this.проксиЧекерToolStripMenuItem_Click);
+            // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(359, 96);
+            this.startButton.Location = new System.Drawing.Point(244, 96);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(86, 31);
+            this.startButton.Size = new System.Drawing.Size(201, 31);
             this.startButton.TabIndex = 3;
             this.startButton.Text = "Начать";
             this.startButton.UseVisualStyleBackColor = true;
@@ -169,7 +179,7 @@ namespace ssLoader
             this.versions.Name = "versions";
             this.versions.Size = new System.Drawing.Size(39, 20);
             this.versions.TabIndex = 5;
-            this.versions.Text = "v 1.1";
+            this.versions.Text = "v 1.2";
             // 
             // Author
             // 
@@ -180,11 +190,22 @@ namespace ssLoader
             this.Author.TabIndex = 7;
             this.Author.Text = "Author: @iDivine";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(244, 134);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(201, 29);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Завершить поток";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 182);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Author);
             this.Controls.Add(this.versions);
             this.Controls.Add(this.timeEnd);
@@ -221,6 +242,8 @@ namespace ssLoader
         private System.Windows.Forms.ToolStripMenuItem начальныеЦеныToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem конфигЗаливаToolStripMenuItem;
         private System.Windows.Forms.Label Author;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem проксиЧекерToolStripMenuItem;
     }
 }
 
