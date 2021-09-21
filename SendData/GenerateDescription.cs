@@ -65,7 +65,7 @@ namespace ssLoader.SendData
         {
             using FileStream sets = File.OpenRead(@$"{getCurrDir}\Config\Servers\{project}.json");
             var jsonConfig = await JsonSerializer.DeserializeAsync<ServerSets>(sets);
-            if (mail.Contains("Привязана") && jsonConfig.mail_guard == false)
+            if (mail.Contains("Привязана") && jsonConfig.mail_guard == true)
                 return false;
             else
                 return true;

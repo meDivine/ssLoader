@@ -217,7 +217,6 @@ namespace ssLoader.Arizona
                         string title = await descGenerator.GenerateTitleAsync(result.lvl, result.money, result.cars);
                         // MessageBox.Show($"{Project} | Сервер {server} Ник {result.nick} Цена: {summMoney} денег: {MinifyLong(result.money)} уровень {result.lvl}");
                         var resultat = await Task.Run(() => accountSender.SendApi(jsonConfig.api_key, result.ip, summMoney, null, result.nick, result.password, "", jsonConfig.seller_message, title));
-                        MessageBox.Show(title);
                         if (resultat.Contains("Вы уже добавляли этот аккаунт"))
                         {
                             Log.Error($"[{Project} - {server}] Ошибка добавления аккаунта {result.nick} | Аккаунт уже выставлен на продажу");
